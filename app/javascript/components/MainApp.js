@@ -39,8 +39,6 @@ class MainApp extends React.Component {
 
 	//this creates trip and puts it in the database
 		createTrip = (trip) =>{
-			console.log("API call",trip);
-			console.log("fetch",JSON.stringify(trip));
 			 fetch('http://localhost:3000/trips', {
 				body: JSON.stringify(trip),
 				headers:{

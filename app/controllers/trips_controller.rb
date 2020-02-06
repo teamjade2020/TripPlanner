@@ -4,16 +4,14 @@ class TripsController < ApplicationController
         render json: trips.to_json(:include => :locations)
     end
 
-    # def show
-    # end
-    #
+    def show
+    end
+
     def create
-    #
         tripnew = Trip.new(trip_params)
         if tripnew.save
             render json: tripnew
         end
-
     end
 
     def trip_params
@@ -21,8 +19,8 @@ class TripsController < ApplicationController
     end
 
     def destroy
-        # Trip.destroy(params[:id])
-        # render json:Trip.all
+        Trip.destroy(params[:id])
+        render json:Trip.all
     end
 
     def update
