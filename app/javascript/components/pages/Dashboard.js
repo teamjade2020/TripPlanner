@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
 					<Col>
 
 						{trip.locations.map ((v, i)=>{
-						console.log("inside second map", trip , v)
 						const tripname = trip.name
 						const tripid = trip.id
 						const day1 = Date.parse(current_date)

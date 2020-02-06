@@ -28,7 +28,6 @@ class Newtrip extends React.Component {
 
 	handleSubmit = (locations) => {
 		let {form} = this.state
-		console.log(this.state.form);
 		this.state.form.locations.push(locations)
 		this.setState({form: form})
 		this.props.onSubmit(this.state.form)

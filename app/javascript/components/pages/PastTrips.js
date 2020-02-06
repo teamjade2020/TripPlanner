@@ -8,14 +8,12 @@ import {
 class PastTrips extends React.Component {
 	render() {
 		const{current_user, trips, current_date }=this.props
-		console.log( this.props)
 		const trip = trips.filter((a,i)=>{
 			return(
 				a.user_id === current_user.id
 			)
 
 		})
-		console.log(trip)
 
   		return (
 			<Container>
@@ -29,9 +27,7 @@ class PastTrips extends React.Component {
   					<Col>
 
 					  {trip.locations.map ((v, i)=>{
-						  console.log("inside second map", trip , v)
 						  const tripname = trip.name
-						  console.log("trip name:", tripname)
 						  return (
 							  <>
 							  { current_date > v.start_date &&

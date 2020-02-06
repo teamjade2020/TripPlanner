@@ -22,7 +22,6 @@ class NewTripLocations extends React.Component {
 		let {locations} = this.state
 		locations[e.target.name] = e.target.value
 		this.setState({locations: locations})
-		console.log(locations)
 	}
 
 	handleSubmit = () => {

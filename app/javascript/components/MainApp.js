@@ -26,16 +26,13 @@ class MainApp extends React.Component {
 
 	// gets trips from trips database in backend
 		getTrips = () =>{
-		console.log("Inside the API call");
 		fetch("http://localhost:3000/trips")
 		.then((response)=>{
-			console.log("after fetch",response);
 			if(response.status === 200){
 				return(response.json())
 			}
 		})
 		.then((tripsArray)=>{
-			console.log("trips",tripsArray);
 			 this.setState({trips: tripsArray})
 		})
 	}
@@ -74,12 +71,29 @@ class MainApp extends React.Component {
 
 	<h1> Trip Planner</h1>
           <React.Fragment>
-		  	<Navbar>
+
          {signed_in &&
               <div>
-                <a href={sign_out_route}>Sign Out</a>
 
+
+				<Navbar>
+				<NavItem>
+				<Link to="/trips"> Trips </Link>
+				</NavItem>
+
+				<NavItem>
+				<Link to="/pasttrips"> Past Trips </Link>
+				</NavItem>
+
+				<NavItem>
+				<Link to="/newtrip"> Add New  </Link>
+				</NavItem>
+				<NavItem>
+				<a href={sign_out_route}>Sign Out</a>
+				</NavItem>
+				</Navbar>
               </div>
+
             }
             {!signed_in &&
               <div>
@@ -87,20 +101,10 @@ class MainApp extends React.Component {
               </div>
 		  }
 
-		  <NavItem>
-		  <Link to="/trips"> Trips </Link>
-		  </NavItem>
-
-		  <NavItem>
-		 <Link to="/pasttrips"> Past Trips </Link>
-		 </NavItem>
-
-		 <NavItem>
-		<Link to="/newtrip"> Add New  </Link>
-		</NavItem>
 
 
-		  	</Navbar>
+
+
 
           <Switch>
 
