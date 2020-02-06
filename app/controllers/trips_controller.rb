@@ -4,21 +4,25 @@ class TripsController < ApplicationController
         render json: trips.to_json(:include => :locations)
     end
 
-    def show
-    end
-
+    # def show
+    # end
+    #
     def create
-        trip = Trip.create(trip_params)
-        render json: trip
+    #
+        tripnew = Trip.new(trip_params)
+        if tripnew.save
+            render json: tripnew
+        end
+
     end
 
     def trip_params
-        params.require(:trip).permit(:user_id,:name, [:locations])
+        params.require(:trip).permit(:user_id,:name, locations_attributes: [:id, :location,:start_date,:end_date, :details])
     end
 
     def destroy
-        Trip.destroy(params[:id])
-        render json:Trip.all
+        # Trip.destroy(params[:id])
+        # render json:Trip.all
     end
 
     def update
