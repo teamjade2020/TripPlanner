@@ -8,12 +8,13 @@ class NewTripLocations extends React.Component {
 		super(props)
 		this.state = {
 			success:false,
-			locations:[{
+			locations:{
+					trip_id: '',
 					location: '',
 					start_date:'',
 					end_date: '',
 					details: ''
-				}]
+				}
 			}
 		}
 

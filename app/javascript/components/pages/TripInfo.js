@@ -3,9 +3,14 @@ import {
   Card, CardImg, Row,CardDeck,Col, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Container
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 
 class TripInfo extends React.Component {
+
+	handleDelete = () =>{
+		this.props.onDelete(this.props.match.params.id)
+	}
 
 	render(){
 		console.log(this.props);
@@ -34,6 +39,7 @@ class TripInfo extends React.Component {
 						  <CardBody>
 						  <CardTitle>{tripname}</CardTitle>
 						  <CardSubtitle>Start Date:{v.start_date} End Date:{v.end_date}</CardSubtitle>
+						  <Link onClick={this.handleDelete}> Delete Trip </Link>
 
 						  </CardBody>
 						 </Card>
