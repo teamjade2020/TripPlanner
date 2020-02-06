@@ -21,7 +21,7 @@ class MainApp extends React.Component {
 	}
 
 	componentDidMount(){
-		this.getTrips()
+		// this.getTrips()
 	}
 
 	// gets trips from trips database in backend
@@ -39,7 +39,7 @@ class MainApp extends React.Component {
 
 	//this creates trip and puts it in the database
 		createTrip = (trip) =>{
-			return fetch('/trips', {
+			 fetch('http://localhost:3000/trips', {
 				body: JSON.stringify(trip),
 				headers:{
 					'Content-Type': 'application/json'
@@ -52,8 +52,6 @@ class MainApp extends React.Component {
 				}
 			})
 		}
-
-
 
   render () {
 	  const todayDate = new Date().toISOString().slice(0,10)

@@ -5,9 +5,9 @@ describe "Trips API", type: :request do
 
 
   it "shows all trips" do
-    # Create a new trip in the Test Database (not the same one as development)
-    # User.create!(first_name: 'Washingtom', last_name: 'George', password: '123456', password_confirmation: '123456', email: 'pass@word.com')
-    # sign_in user
+    Create a new trip in the Test Database (not the same one as development)
+    User.create!(first_name: 'Washingtom', last_name: 'George', password: '123456', password_confirmation: '123456', email: 'pass@word.com')
+    sign_in user
     user = User.create!(email: "user@example.org", password: "very-secret")
     Trip.create!(name: 'Washingtom', user_id: user.id)
 
