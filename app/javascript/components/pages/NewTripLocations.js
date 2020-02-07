@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 
+
 class NewTripLocations extends React.Component {
 	constructor(props){
 		super(props)
@@ -34,9 +35,8 @@ class NewTripLocations extends React.Component {
 
 	render() {
 		return(
-
+			<>
 			<React.Fragment>
-
 
 			<FormGroup>
         	<Label for="location">Trip Location</Label>
@@ -87,11 +87,12 @@ class NewTripLocations extends React.Component {
 			placeholder="Body" />
       		</FormGroup>
 
-		
+
 			{this.state.success && <Redirect to="/trips" />}
 			<Link to ="/trips" className= "btn btn-primary"
 			onClick={this.handleSubmit}>Add Trip</Link>
 			</React.Fragment>
+			</>
 		)
 	}
 }
