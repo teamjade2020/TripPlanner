@@ -15,7 +15,7 @@ class Newtrip extends React.Component {
 			form:{
 				user_id: this.props.current_user.id ,
 				name:'',
-				locations:[ ]
+				locations_attributes:[ ]
 			}
 		}
 	}
@@ -28,26 +28,19 @@ class Newtrip extends React.Component {
 
 	handleSubmit = (locations) => {
 		let {form} = this.state
-		this.state.form.locations.push(locations)
+		this.state.form.locations_attributes.push(locations)
 		this.setState({form: form})
 		this.props.onSubmit(this.state.form)
-		.then(()=>{
-			this.setState({success: true})
-		})
+		// .then(()=>{
+		// 	this.setState({success: true})
+		// })
 
 	}
-
-
-
-
-
 
 	render() {
 		return(
 
 			<React.Fragment>
-
-
 
 			<Form>
 			<FormGroup>
@@ -62,8 +55,6 @@ class Newtrip extends React.Component {
       		</FormGroup>
 
 			<NewTripLocations onSubmit={this.handleSubmit}/>
-
-
 
 			</Form>
 			</React.Fragment>

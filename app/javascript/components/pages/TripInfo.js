@@ -39,7 +39,7 @@ class TripInfo extends React.Component {
 						  <CardBody>
 						  <CardTitle>{tripname}</CardTitle>
 						  <CardSubtitle>Start Date:{v.start_date} End Date:{v.end_date}</CardSubtitle>
-						  <Link onClick={this.handleDelete}> Delete Trip </Link>
+						  <Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link>
 
 						  </CardBody>
 						 </Card>

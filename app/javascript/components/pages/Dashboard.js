@@ -19,13 +19,13 @@ class Dashboard extends React.Component {
 
   		return (
 			<Container>
-			<Row>
 			<h1> Upcoming Trips </h1>
-			<Col sm={12}>
+			<Row>
+			<Col xs={12}>
 			<CardDeck>
-				{trip.map((trip) =>
+				{trip.map((trip,i) =>
 
-					<Col>
+					<Col key = {i}>
 
 						{trip.locations.map ((v, i)=>{
 						const tripname = trip.name
@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
 						{ current_date < v.start_date &&
 						<>
 
-						<Card>
+						<Card key = {i}>
 						<CardBody>
 					    <CardTitle>{tripname}</CardTitle>
 						<CardSubtitle>Start: {v.start_date} End: {v.end_date}</CardSubtitle>

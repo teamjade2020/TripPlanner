@@ -9,7 +9,6 @@ class NewTripLocations extends React.Component {
 		this.state = {
 			success:false,
 			locations:{
-					trip_id: '',
 					location: '',
 					start_date:'',
 					end_date: '',
@@ -20,7 +19,9 @@ class NewTripLocations extends React.Component {
 
 
 	handleChange = (e) => {
+
 		let {locations} = this.state
+		console.log("in side Locations",locations);
 		locations[e.target.name] = e.target.value
 		this.setState({locations: locations})
 	}
@@ -35,7 +36,7 @@ class NewTripLocations extends React.Component {
 		return(
 
 			<React.Fragment>
-			<Form>
+
 
 			<FormGroup>
         	<Label for="location">Trip Location</Label>
@@ -86,7 +87,7 @@ class NewTripLocations extends React.Component {
 			placeholder="Body" />
       		</FormGroup>
 
-			</Form>
+
 			{this.state.success && <Redirect to="/trips" />}
 			<Link to ="/trips" className= "btn btn-primary"
 			onClick={this.handleSubmit}>Add Trip</Link>
