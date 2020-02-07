@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Navbar, NavItem } from 'reactstrap'
 
-
 //pages
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
 import TripInfo from "./pages/TripInfo"
 import Newtrip from "./pages/Newtrip"
 import NewTripLocations from './pages/NewTripLocations'
+import Topbar from './Topbar'
 
 class MainApp extends React.Component {
 	constructor(props){
