@@ -87,7 +87,7 @@ class NewTripLocations extends React.Component {
 			placeholder="Body" />
       		</FormGroup>
 
-		
+
 			{this.state.success && <Redirect to="/trips" />}
 			<Link to ="/trips" className= "btn btn-primary"
 			onClick={this.handleSubmit}>Add Trip</Link>
