@@ -53,6 +53,23 @@ class MainApp extends React.Component {
 			})
 		}
 
+
+		//delete funtionality
+		deleteTrip = (id)=> {
+			return fetch(`/trips/${id}` ,{
+				method: 'DELETE'
+			})
+			.then((response)=> {
+				if(response.ok){
+				return this.getTrips()
+			}
+		})
+	}
+
+
+
+
+
   render () {
 	  const todayDate = new Date().toISOString().slice(0,10)
       const {
@@ -106,7 +123,7 @@ class MainApp extends React.Component {
 
           <Switch>
 
-		   <Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} trips={ this.state.trips } current_date ={ todayDate } /> } />
+		   <Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
 
 		  <Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 

@@ -19,9 +19,9 @@ class Dashboard extends React.Component {
 
   		return (
 			<Container>
-			<Row>
 			<h1> Upcoming Trips </h1>
-			<Col sm={12}>
+			<Row>
+			<Col xs={12}>
 			<CardDeck>
 				{trip.map((trip,i) =>
 
