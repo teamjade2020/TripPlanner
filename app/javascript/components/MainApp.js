@@ -26,7 +26,7 @@ class MainApp extends React.Component {
 
 	// gets trips from trips database in backend
 		getTrips = () =>{
-		fetch("http://localhost:3000/trips")
+		fetch("/trips")
 		.then((response)=>{
 			if(response.status === 200){
 				return(response.json())
@@ -39,7 +39,7 @@ class MainApp extends React.Component {
 
 	//this creates trip and puts it in the database
 		createTrip = (trip) =>{
-			 fetch('http://localhost:3000/trips', {
+			 fetch('/trips', {
 				body: JSON.stringify(trip),
 				headers:{
 					'Content-Type': 'application/json'
