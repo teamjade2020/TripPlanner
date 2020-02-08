@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 
@@ -42,6 +42,8 @@ class Newtrip extends React.Component {
 
 			<React.Fragment>
 
+			<Container sm={6}>
+
 			<Form>
 				<FormGroup>
 		        	<Label for="name">Name Of Trip</Label>
@@ -57,6 +59,9 @@ class Newtrip extends React.Component {
 				<NewTripLocations onSubmit={this.handleSubmit}/>
 
 			</Form>
+
+			</Container>
+
 			</React.Fragment>
 
 

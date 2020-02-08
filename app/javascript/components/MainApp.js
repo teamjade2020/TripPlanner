@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Navbar, NavItem } from 'reactstrap'
 
+
+
 //pages
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
@@ -82,39 +84,11 @@ class MainApp extends React.Component {
 
     return (
     <Router>
-
-
-	<h1> Trip Planner</h1>
           <React.Fragment>
 
-         {signed_in &&
-              <div>
 
-
-				<Navbar>
-				<NavItem>
-				<Link to="/trips"> Trips </Link>
-				</NavItem>
-
-				<NavItem>
-				<Link to="/pasttrips"> Past Trips </Link>
-				</NavItem>
-
-				<NavItem>
-				<Link to="/newtrip"> Add New  </Link>
-				</NavItem>
-				<NavItem>
-				<a href={sign_out_route}>Sign Out</a>
-				</NavItem>
-				</Navbar>
-              </div>
-
-            }
-            {!signed_in &&
-              <div>
-                <a href={sign_in_route}>Sign In</a>
-              </div>
-		  }
+		  {/*nav bar*/}
+		  <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} />
 
 
 
