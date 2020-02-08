@@ -90,7 +90,6 @@ class MainApp extends React.Component {
          {signed_in &&
               <div>
 
-
 				<Navbar>
 				<NavItem>
 				<Link to="/trips"> Trips </Link>
@@ -115,11 +114,6 @@ class MainApp extends React.Component {
                 <a href={sign_in_route}>Sign In</a>
               </div>
 		  }
-
-
-
-
-
 
           <Switch>
 

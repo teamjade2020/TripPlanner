@@ -25,11 +25,9 @@ class TripInfo extends React.Component {
 			<Col xs={12}>
 			<CardDeck>
 
-
-
 				<Col>
 
-				  {trip.locations.map ((v, i)=>{
+				  {trip && trip.locations.map ((v, i)=>{
 					  const tripname = trip.name
 					  return (
 
@@ -52,13 +50,9 @@ class TripInfo extends React.Component {
 			  )}
 				</Col>
 
-
-
 			</CardDeck>
 			</Col>
 			</Row>
-
-
 			</Container>
 		)
 
