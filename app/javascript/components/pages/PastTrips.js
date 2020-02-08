@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Card, CardImg, Row,CardDeck,Col, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Container
+  CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse
 } from 'reactstrap';
 
 
@@ -68,7 +68,11 @@ class PastTrips extends React.Component {
 							  <CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
 							  <CardSubtitle>End Date:{formatDay2()}</CardSubtitle>
 							  <CardText> sample text</CardText>
-							  <Button className="btn">View Trip Details</Button>
+							  <UncontrolledCollapse toggler={`#toggler${v.id}`}>
+								  <CardText>{ v.location }</CardText>
+								  <CardText>{ v.details }</CardText>
+							  </UncontrolledCollapse>
+							  <Button color="secondary" id={`toggler${v.id}`} style = {{marginBottom: '1rem'}}>View Trip Details</Button>
 							  </CardBody>
 							 </Card>
 
