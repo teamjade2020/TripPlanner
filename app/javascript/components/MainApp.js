@@ -86,14 +86,8 @@ class MainApp extends React.Component {
     <Router>
           <React.Fragment>
 
-
-		  {/*nav bar*/}
+      {/*nav bar*/}
 		  <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} />
-
-
-
-
-
 
           <Switch>
 

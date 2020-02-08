@@ -31,10 +31,6 @@ class Newtrip extends React.Component {
 		this.state.form.locations_attributes.push(locations)
 		this.setState({form: form})
 		this.props.onSubmit(this.state.form)
-		// .then(()=>{
-		// 	this.setState({success: true})
-		// })
-
 	}
 
 	render() {
