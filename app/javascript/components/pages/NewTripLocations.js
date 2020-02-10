@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { Link } from "react-router-dom"
-
+// import places from './places.js'
 
 
 class NewTripLocations extends React.Component {
@@ -16,26 +16,44 @@ class NewTripLocations extends React.Component {
 					details: ''
 				}
 			}
+		this.handleChange = this.handleChange.bind(this);
 		}
 
 
 	handleChange = (e) => {
 
 		let {locations} = this.state
+		console.log("values",e.target);
 		console.log("in side Locations",locations);
 		locations[e.target.name] = e.target.value
 		this.setState({locations: locations})
 	}
 
 	handleSubmit = () => {
+		let {locations} = this.state
+		console.log(document.getElementById('location').value)
+		locations.location = document.getElementById('location').value
+		console.log(locations);
+		this.setState({locations: locations})
 		this.props.onSubmit(this.state.locations)
 
+	}
+
+	componentDidMount(){
+		console.log("In Life Cycle");
+		var places = require('places.js');
+		var placesAutocomplete = places({
+		  appId: 'plUPETZRZK4Z',
+		  apiKey: '1beace8bb77d86050f898d516af020c5',
+		  container: document.querySelector('#location')
+		});
 	}
 
 
 	render() {
 		return(
 			<>
+
 			<React.Fragment>
 
 			<FormGroup>
