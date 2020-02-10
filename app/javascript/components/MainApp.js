@@ -12,6 +12,7 @@ import TripInfo from "./pages/TripInfo"
 import Newtrip from "./pages/Newtrip"
 import NewTripLocations from './pages/NewTripLocations'
 import Topbar from './Topbar'
+import Top from './Top'
 
 class MainApp extends React.Component {
 	constructor(props){
@@ -86,8 +87,9 @@ class MainApp extends React.Component {
     <Router>
           <React.Fragment>
 
-      {/*nav bar*/}
-		  <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} />
+      		{/*nav bar*/}
+		  {/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
+		  <Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} />
 
           <Switch>
 
@@ -104,7 +106,7 @@ class MainApp extends React.Component {
 
           </Switch>
 
-	  </React.Fragment>
+	  	</React.Fragment>
 	   </Router>
     );
   }

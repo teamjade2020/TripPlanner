@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  NavbarText,
-  Button
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarText, Button } from 'reactstrap';
 
 const Topbar = (props) => {
 
   return (
     <div>
 		{props.signed_in &&
-		  <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary" light expand="md">
+		  <Navbar className="navbar navbar-expand-md navbar-collapse-xs navbar-dark bg-primary">
 	        <NavbarBrand href="/">Trip Planner</NavbarBrand>
-
 	          <Nav className="mr-auto" navbar>
 	            <NavItem>
 	            	<NavLink href="/trips">Trips</NavLink>
