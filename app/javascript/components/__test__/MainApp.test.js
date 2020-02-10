@@ -7,7 +7,6 @@ import { shallow } from 'enzyme'
 import Dashboard from '../pages/Dashboard.js'
 import MainApp from '../MainApp.js'
 import {BrowseRouter as Router} from 'react-router-dom'
-import Pic from 'images/pic.jpeg'
 
 Enzyme.configure({ adapter: new Adapter() });
 
