@@ -9,7 +9,7 @@ import { Navbar, NavItem } from 'reactstrap'
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
 import TripInfo from "./pages/TripInfo"
-import Newtrip from "./pages/Newtrip"
+import NewTrip from "./pages/NewTrip"
 import NewTripLocations from './pages/NewTripLocations'
 import Topbar from './Topbar'
 import Top from './Top'
@@ -93,13 +93,13 @@ class MainApp extends React.Component {
 
           <Switch>
 
-		   <Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
+		   <Route exact path="/trips/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
 
 		  <Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
 		  <Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
-		  <Route exact path="/newtrip" render={(props) => <Newtrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
+		  <Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
 
 		  <Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
 

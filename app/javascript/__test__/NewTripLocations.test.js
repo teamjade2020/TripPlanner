@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NewTripLocations from '../pages/NewTripLocations'
+import NewTripLocations from '../components/pages/NewTripLocations'
 import { mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'

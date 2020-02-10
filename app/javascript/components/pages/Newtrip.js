@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import NewTripLocations from './NewTripLocations'
 
 
-class Newtrip extends React.Component {
+class NewTrip extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
@@ -57,4 +57,4 @@ class Newtrip extends React.Component {
 
 
 }
-export default Newtrip;
+export default NewTrip;
