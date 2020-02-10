@@ -35,32 +35,23 @@ class Newtrip extends React.Component {
 
 	render() {
 		return(
-
 			<React.Fragment>
-
-			<Container sm={6}>
-
-			<Form>
-				<FormGroup>
-		        	<Label for="name">Name Of Trip</Label>
-			        	<Input
-						type="text"
-						name="name"
-						id="name"
-						onChange={this.handleChange}
-						value={this.state.form.name}
-						placeholder="Name Your Trip" />
-	      		</FormGroup>
-
-				<NewTripLocations onSubmit={this.handleSubmit}/>
-
-			</Form>
-
-			</Container>
-
+				<Container sm={6}>
+					<Form>
+						<FormGroup>
+							<Label for="name">Name Of Trip</Label>
+							<Input
+								type="text"
+								name="name"
+								id="name"
+								onChange={this.handleChange}
+								value={this.state.form.name}
+								placeholder="Name Your Trip" />
+						</FormGroup>
+						<NewTripLocations onSubmit={this.handleSubmit}/>
+					</Form>
+				</Container>
 			</React.Fragment>
-
-
 		)
 	}
 

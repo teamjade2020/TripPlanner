@@ -26,6 +26,9 @@
     "webpack-dev-server": "^3.10.2"
 },
     "jest": {
-        "rootDir": "app/javascript/components"
+        "rootDir": "app/javascript/components",
+        "moduleNameMapper": {
+          "\\.(jpg|png)$": "app/assets"
+        }
     }
 }
