@@ -5,7 +5,11 @@ import Pic from 'images/pic.jpg'
 
 
 class Dashboard extends React.Component {
+
+
 	render() {
+
+
 		const{current_user, trips, current_date }=this.props
 
 		const trip = trips.filter((a,i)=>{
@@ -65,7 +69,7 @@ class Dashboard extends React.Component {
 										}
 										return `${m}/${d}/${y}`
 									}
-								
+
 									return (
 									<>
 									{ current_date < v.start_date &&
@@ -88,6 +92,7 @@ class Dashboard extends React.Component {
 													<UncontrolledCollapse toggler={`#toggler${v.id}`}>
 														<CardText>{ v.location }</CardText>
 														<CardText>{ v.details }</CardText>
+
 													</UncontrolledCollapse>
 													<Button color="primary" id={`toggler${v.id}`} style = {{marginBottom: '1rem'}}>More Info</Button>
 												</Col>

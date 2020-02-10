@@ -4,9 +4,9 @@ import { mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallow } from 'enzyme'
-import Dashboard from '../pages/Dashboard.js'
-import MainApp from '../MainApp.js'
-import {BrowseRouter as Router} from 'react-router-dom'
+import Dashboard from '../components/pages/Dashboard.js'
+import MainApp from '../components/MainApp.js'
+
 
 Enzyme.configure({ adapter: new Adapter() });
 

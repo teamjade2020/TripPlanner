@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Dashboard from '../pages/Dashboard'
+import PastTrips from '../components/pages/PastTrips'
 import { mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
@@ -14,8 +14,8 @@ describe('Sample Test', () => {
     })
 })
 
-//Display the trips, where start date > today date
-// similar to PastTrip
+//Display the past trips, where start date < today date
+// similar to Dashboard
 
 describe('Sample Test', () => {
     it('renders without crashing', () => {
@@ -31,7 +31,7 @@ describe('Sample Test', () => {
             current_user: {id: '1'}
 
         }
-        const wrapper = mount(<Dashboard {...props}/>);
+        const wrapper = mount(<PastTrips {...props}/>);
         // const div = document.createElement('div')
         // ReactDOM.render(<PastTrip {...props}/>,div)
         const com = wrapper.find('Col')
