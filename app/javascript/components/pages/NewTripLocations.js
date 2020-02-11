@@ -22,11 +22,8 @@ class NewTripLocations extends React.Component {
 
 	handleChange = (e) => {
 		let {locations} = this.state
-<<<<<<< HEAD
 		console.log("values",e.target);
 		console.log("in side Locations",locations);
-=======
->>>>>>> master
 		locations[e.target.name] = e.target.value
 		this.setState({locations: locations})
 	}
@@ -65,7 +62,7 @@ class NewTripLocations extends React.Component {
 			<React.Fragment>
 
 			<FormGroup>
-<<<<<<< HEAD
+
         	<Label for="location">Trip Location</Label>
         	<input
 			type="text"
@@ -74,8 +71,7 @@ class NewTripLocations extends React.Component {
 			onChange={this.handleChange}
 			value={this.state.locations.location}
 			placeholder="Enter Location" />
-=======
->>>>>>> master
+
       		</FormGroup>
 
 			<Row>
