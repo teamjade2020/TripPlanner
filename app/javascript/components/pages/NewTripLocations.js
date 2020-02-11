@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { Link } from "react-router-dom"
-// import places from './places.js'
+
 
 
 class NewTripLocations extends React.Component {
@@ -31,8 +31,8 @@ class NewTripLocations extends React.Component {
 
 	handleSubmit = () => {
 		let {locations} = this.state
-		console.log(document.getElementById('location').value)
-		locations.location = document.getElementById('location').value
+
+		locations.location = document.getElementById('location').value.split(",").shift()
 		console.log(locations);
 		this.setState({locations: locations})
 		this.props.onSubmit(this.state.locations)
@@ -45,8 +45,14 @@ class NewTripLocations extends React.Component {
 		var placesAutocomplete = places({
 		  appId: 'plUPETZRZK4Z',
 		  apiKey: '1beace8bb77d86050f898d516af020c5',
-		  container: document.querySelector('#location')
-		});
+		  container: document.querySelector('#location'),
+		  type: 'city'
+	  }).configure({
+		  language: 'en',
+		  type: 'city',
+		  countries: 'us'
+	  });
+		placesAutocomplete.on('change', e => console.log(e.suggestion,"LatLan",e.suggestion.latlng));
 	}
 
 
@@ -58,7 +64,7 @@ class NewTripLocations extends React.Component {
 
 			<FormGroup>
         	<Label for="location">Trip Location</Label>
-        	<Input
+        	<input
 			type="text"
 			name="location"
 			id="location"

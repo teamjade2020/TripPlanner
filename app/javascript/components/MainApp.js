@@ -8,7 +8,7 @@ import { Navbar, NavItem } from 'reactstrap'
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
 import TripInfo from "./pages/TripInfo"
-import Newtrip from "./pages/Newtrip"
+import NewTrip from "./pages/NewTrip"
 import NewTripLocations from './pages/NewTripLocations'
 
 class MainApp extends React.Component {
@@ -66,10 +66,6 @@ class MainApp extends React.Component {
 		})
 	}
 
-
-
-
-
   render () {
 	  const todayDate = new Date().toISOString().slice(0,10)
       const {
@@ -123,7 +119,7 @@ class MainApp extends React.Component {
 
 		  <Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
-		  <Route exact path="/newtrip" render={(props) => <Newtrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
+		  <Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
 
 		  <Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
 
