@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TripInfo from '../pages/TripInfo'
+import TripInfo from '../components/pages/TripInfo'
 import { mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'

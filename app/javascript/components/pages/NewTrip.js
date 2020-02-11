@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 
@@ -35,27 +35,23 @@ class NewTrip extends React.Component {
 
 	render() {
 		return(
-
 			<React.Fragment>
-
-			<Form>
-			<FormGroup>
-        	<Label for="name">Name Of Trip</Label>
-        	<Input
-			type="text"
-			name="name"
-			id="name"
-			onChange={this.handleChange}
-			value={this.state.form.name}
-			placeholder="Name Your Trip" />
-      		</FormGroup>
-
-			<NewTripLocations onSubmit={this.handleSubmit}/>
-
-			</Form>
+				<Container sm={6}>
+					<Form>
+						<FormGroup>
+							<Label for="name">Name Of Trip</Label>
+							<Input
+								type="text"
+								name="name"
+								id="name"
+								onChange={this.handleChange}
+								value={this.state.form.name}
+								placeholder="Name Your Trip" />
+						</FormGroup>
+						<NewTripLocations onSubmit={this.handleSubmit}/>
+					</Form>
+				</Container>
 			</React.Fragment>
-
-
 		)
 	}
 
