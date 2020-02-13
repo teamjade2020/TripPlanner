@@ -13,6 +13,8 @@ import NewTrip from "./pages/NewTrip"
 import NewTripLocations from './pages/NewTripLocations'
 import Topbar from './Topbar'
 import Top from './Top'
+import EditTrip from './pages/EditTrip'
+import EditTripLocation from './pages/EditTripLocation'
 
 class MainApp extends React.Component {
 	constructor(props){
@@ -68,7 +70,27 @@ class MainApp extends React.Component {
 			}
 		})
 	}
-
+		editTrip = (form)=> {
+			let trip = {
+				user_id: this.props.current_user.id ,
+				name: form.name,
+				locations_attributes: form.locations
+			}
+			console.log("API call",trip);
+			return fetch (`/trips/${form.id}`, {
+				body: JSON.stringify(trip),
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'PUT'
+			})
+			.then ((response)=> {
+				console.log("response",response);
+				if (response.ok){
+					return this.getTrips()
+				}
+			})
+		}
 
 
 
@@ -93,16 +115,23 @@ class MainApp extends React.Component {
 
           <Switch>
 
-		   <Route exact path="/trips/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
+		   <Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
 
 		  <Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
 		  <Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
+		  //route for new trips
 		  <Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
-
 		  <Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
+		  //end of new trip routes
 
+		  //route  for edit trip
+		  <Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user }
+		  current_date ={ todayDate } trips={this.state.trips} /> } />
+		   <Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
+
+		  //end of edit trip route
 
           </Switch>
 

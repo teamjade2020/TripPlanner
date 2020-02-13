@@ -89,12 +89,9 @@ class Dashboard extends React.Component {
 													<CardSubtitle>Start: {formatDay1()}</CardSubtitle>
 													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
 													<CardText> Days Until Trip: {daystil}</CardText>
-													<UncontrolledCollapse toggler={`#toggler${v.id}`}>
-														<CardText>{ v.location }</CardText>
-														<CardText>{ v.details }</CardText>
 
-													</UncontrolledCollapse>
-													<Button color="primary" id={`toggler${v.id}`} style = {{marginBottom: '1rem'}}>More Info</Button>
+													<Button href={`/tripinfo/${tripid}`}>More Info</Button>
+
 												</Col>
 											</Row>
 										</CardBody>

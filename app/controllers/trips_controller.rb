@@ -24,5 +24,10 @@ class TripsController < ApplicationController
     end
 
     def update
+		@tripupdate = Trip.find(params[:id])
+		@tripupdate.update(trip_params)
+		if @tripupdate.valid?
+			render json: @tripupdate
+		end
     end
 end
