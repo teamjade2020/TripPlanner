@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse } from 'reactstrap';
+import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse, CardHeader } from 'reactstrap';
+import { Jumbotron} from 'reactstrap';
 import { Link } from "react-router-dom"
 import Pic from 'images/pic.jpg'
 
@@ -19,11 +20,18 @@ class Dashboard extends React.Component {
 		})
 
 		const imgStyle = {
-			maxHeight: 128,
-			maxWidth: 128
+			maxHeight: 200,
+			maxWidth: 200
 		}
 
   		return (
+			<>
+			<Jumbotron>
+		        <h1 className="display-3">Hello, {current_user.first_name}</h1>
+		        <p className="lead">Welcome to your travel Dashboard!!!</p>
+		        <hr className="my-2" />
+		        <h1>Upcoming Trips</h1>
+	      	</Jumbotron>
 			<Container>
 			<h1> Upcoming Trips </h1>
 				<Row >
@@ -31,7 +39,7 @@ class Dashboard extends React.Component {
 						<CardDeck style ={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
 							{trip.map((trip,i) =>
 
-								<Col md={12} xs={12} key = {i}>
+								<Col md={8} xs={8} key = {i}>
 
 									{trip.locations.map ((v, i)=>{
 									const tripname = trip.name
@@ -77,20 +85,23 @@ class Dashboard extends React.Component {
 										<CardBody>
 											<Row>
 												<Col>
-													<CardTitle className="text-center">{tripname}</CardTitle>
+													<CardTitle className="card text-white text-center bg-primary mb-3">{tripname}</CardTitle>
 												</Col>
 											</Row>
 											<Row>
-												<Col md={3}>
-													<CardImg left src={Pic} style={imgStyle} alt="travel image" />
+												<Col md={5}>
+													<CardImg className="card  text-center"
+													left src={Pic} style={imgStyle} alt="travel image" />
 												</Col>
-												<Col md="auto">
+												<Col md={4}>
 													<CardSubtitle>Start: {formatDay1()}</CardSubtitle>
 													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
+												</Col>
+												<Col md={3}>
 													<CardText> Days Until Trip: {daystil}</CardText>
 
-
-													<Button href={`/tripinfo/${tripid}`}>More Info</Button>
+													<Link to={`/tripinfo/${tripid}`}>
+													<Button href={`/tripinfo/${tripid}`}>More Info</Button></Link>
 
 
 												</Col>
@@ -106,6 +117,7 @@ class Dashboard extends React.Component {
 					</Col>
 				</Row>
 			</Container>
+			</>
 		);
 	}
 };
