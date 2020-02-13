@@ -7,6 +7,7 @@ import Pic from 'images/pic.jpg'
 class Dashboard extends React.Component {
 
 
+
 	render() {
 
 		const{current_user, trips, current_date }=this.props
@@ -88,7 +89,9 @@ class Dashboard extends React.Component {
 													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
 													<CardText> Days Until Trip: {daystil}</CardText>
 
+
 													<Button href={`/tripinfo/${tripid}`}>More Info</Button>
+
 
 												</Col>
 											</Row>

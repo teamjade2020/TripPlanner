@@ -68,6 +68,7 @@ class MainApp extends React.Component {
 		})
 	}
 
+
 	editTrip = (form)=> {
 		let trip = {
 			user_id: this.props.current_user.id ,
@@ -107,6 +108,7 @@ class MainApp extends React.Component {
 	      	{/*nav bar*/}
 			{/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
 			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} />
+
 
 	        <Switch>
 
