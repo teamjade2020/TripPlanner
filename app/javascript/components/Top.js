@@ -17,7 +17,7 @@ class Top extends React.Component {
     }
 
     render () {
-        const { sign_in_route, signed_in, sign_out_route } = this.props
+        const { sign_in_route, signed_in, sign_out_route, new_user_registration_path} = this.props
         return(
             <React.Fragment>
                 {signed_in &&
@@ -45,6 +45,7 @@ class Top extends React.Component {
                     <NavbarBrand href="/">Trip Planner</NavbarBrand>
                         <Nav className="mr-auto" navbar>
                         </Nav>
+                        <Button className="btn btn-secondary" href={new_user_registration_path}>Sign Up</Button> &nbsp;
                         <Button className="btn btn-secondary" href={sign_in_route}>Sign In</Button>
                     </Navbar>
                 }

@@ -90,7 +90,7 @@ class Dashboard extends React.Component {
 													<CardText> Days Until Trip: {daystil}</CardText>
 
 
-													<Button href={`/tripinfo/${tripid}`}>More Info</Button>
+													<Link to={`/tripinfo/${tripid}`}>More Info</Link>
 
 
 												</Col>
