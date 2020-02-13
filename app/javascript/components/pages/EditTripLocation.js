@@ -26,7 +26,7 @@ class EditTripLocations extends React.Component {
 	setForm = () =>{
 
 		const { locations } = this.state
-		
+
 		var loc = this.props.locations.shift()
 		locations['id'] = loc['id']
 		locations['location'] = loc['location']
@@ -34,7 +34,6 @@ class EditTripLocations extends React.Component {
 		locations['end_date'] = loc['end_date']
 		locations['details'] = loc['details']
 		this.setState({locations: locations})
-		console.log("edit location state:", locations)
 	}
 
 
@@ -45,7 +44,6 @@ class EditTripLocations extends React.Component {
 	}
 
 	handleEdit = () => {
-		console.log("Edit Location",this.state.locations);
 		this.props.onEdit(this.state.locations)
 
 	}

@@ -10,7 +10,7 @@ class TripInfo extends React.Component {
 	}
 
 	render(){
-		console.log(this.props);
+		
 		const  tripid  = this.props.match.params.id
 		const { trips }  = this.props
 		const trip = trips.find((t)=> t.id === parseInt(tripid))

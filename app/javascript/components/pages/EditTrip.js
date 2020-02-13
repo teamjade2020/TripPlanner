@@ -40,22 +40,19 @@ class EditTrip extends React.Component {
 		form.locations = trip.locations
 		this.setState({form: trip})
 		this.setState({success: true})
-		console.log("getform:", this.state.form)
+
 	}
 
 	handleChange = (e) => {
 		let {form} = this.state
 		form[e.target.name] = e.target.value
 		this.setState({form: form})
-		console.log("form:", form)
+
 	}
 
 	handleSubmit = (locations) => {
-		console.log("EditTrip",locations,this.state.form);
 		let {form} = this.state
-		console.log("handlesubmit",form);
 		this.state.form.locations.push(locations)
-		console.log("handlesubmit",this.state.form);
 		this.setState({form: form})
 		console.log(form);
 		this.props.onEdit(this.state.form)
