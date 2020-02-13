@@ -16,13 +16,19 @@ class NewTrip extends React.Component {
 				user_id: this.props.current_user.id ,
 				name:'',
 				locations_attributes:[ ]
-			}
+			},
+			nameValid: false
 		}
 	}
 
 	handleChange = (e) => {
 		let {form} = this.state
 		form[e.target.name] = e.target.value
+		if (form.name !== '') {
+			this.setState({nameValid: true})
+		} else {
+			this.setState({nameValid: false})
+		}
 		this.setState({form: form})
 	}
 
@@ -41,6 +47,8 @@ class NewTrip extends React.Component {
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
 							<Input
+								valid={this.state.nameValid === true}
+								invalid={this.state.nameValid === false}
 								type="text"
 								name="name"
 								id="name"
@@ -48,7 +56,7 @@ class NewTrip extends React.Component {
 								value={this.state.form.name}
 								placeholder="Name Your Trip" />
 						</FormGroup>
-						<NewTripLocations onSubmit={this.handleSubmit}/>
+						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
 					</Form>
 				</Container>
 			</React.Fragment>
