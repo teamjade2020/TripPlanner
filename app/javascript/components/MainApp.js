@@ -11,7 +11,6 @@ import PastTrips from "./pages/PastTrips"
 import TripInfo from "./pages/TripInfo"
 import NewTrip from "./pages/NewTrip"
 import NewTripLocations from './pages/NewTripLocations'
-import Topbar from './Topbar'
 import Top from './Top'
 import EditTrip from './pages/EditTrip'
 import EditTripLocation from './pages/EditTripLocation'
@@ -97,7 +96,8 @@ class MainApp extends React.Component {
 	      signed_in,
 	      sign_in_route,
 	      sign_out_route,
-		  current_user
+		  current_user,
+		  new_user_registration_path
 	    } = this.props
 
 
@@ -107,7 +107,7 @@ class MainApp extends React.Component {
 
 	      	{/*nav bar*/}
 			{/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
-			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} />
+			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} new_user_registration_path={new_user_registration_path}/>
 
 
 	        <Switch>
