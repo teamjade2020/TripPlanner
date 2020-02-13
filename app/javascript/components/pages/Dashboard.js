@@ -90,7 +90,9 @@ class Dashboard extends React.Component {
 													<CardSubtitle>Start: {formatDay1()}</CardSubtitle>
 													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
 													<CardText> Days Until Trip: {daystil}</CardText>
-													<Button href={`/trips/${tripid}`} color="primary" >More Info</Button>
+													<Link to={`/trips/${tripid}`} >
+													<Button  color="primary" >More Info</Button> </Link>
+
 												</Col>
 											</Row>
 										</CardBody>

@@ -5,7 +5,7 @@ import { mount } from 'enzyme'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallow } from 'enzyme'
-// import places from '../pages/places.js'
+import places from '../components/pages/places.js'
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -59,18 +59,13 @@ it('takes details ', () => {
   expect(com.find('Input#details').exists()).toBe(true)
 })
 
-it('has a handleSubmit method ', () => {
+/* it('has a handleSubmit method ', () => {
     const mockFn = jest.fn();
-    const component = shallow(<NewTripLocations onSubmit={mockFn} />,{ disableLifecycleMethods: true });
+    const component = shallow(<NewTripLocations onSubmit={mockFn} /> ,{ disableLifecycleMethods: true } );
+
+//was working on this before leaving
+    const input = component.find('Input').at()
     const button = component.find('Link').at(0);
     button.simulate('click');
     expect(mockFn).toHaveBeenCalled()
-})
-
-// it('fails when container does not resolves to an HTMLInputElement', () => {
-//       document
-//         .querySelector('body')
-//         .appendChild(document.createElement('span'));
-//       const container = 'span';
-//       expect(() => places({ container })).toThrow("error");
-//     });
+}) */

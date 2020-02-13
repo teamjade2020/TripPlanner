@@ -30,8 +30,6 @@ class NewTripLocations extends React.Component {
 
 	handleSubmit = () => {
 		let {locations} = this.state
-
-		locations.location = document.getElementById('location').value.split(",").shift()
 		console.log(locations);
 		this.setState({locations: locations})
 		this.props.onSubmit(this.state.locations)
@@ -39,19 +37,21 @@ class NewTripLocations extends React.Component {
 	}
 
 	componentDidMount(){
+		let {locations} = this.state
 		console.log("In Life Cycle");
 		var places = require('places.js');
 		var placesAutocomplete = places({
 		  appId: 'plUPETZRZK4Z',
 		  apiKey: '1beace8bb77d86050f898d516af020c5',
-		  container: document.querySelector('#location'),
-		  type: 'city'
+		  container: document.querySelector('input#location'),
+		  // type: 'city'
 	  }).configure({
-		  language: 'en',
-		  type: 'city',
-		  countries: 'us'
+		  // type: 'city',
 	  });
-		placesAutocomplete.on('change', e => console.log(e.suggestion,"LatLan",e.suggestion.latlng));
+		placesAutocomplete.on('change', e => {
+		locations['location'] =  e.suggestion.name
+		this.setState({locations: locations})
+		 console.log(e.suggestion,"LatLan",e.suggestion.latlng)});
 	}
 
 

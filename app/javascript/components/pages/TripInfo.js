@@ -3,7 +3,7 @@ import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSub
 import { Link } from 'react-router-dom'
 import Pic from 'images/pic.jpg'
 var count =0
-var location = "San+Diego"
+
 
 class TripInfo extends React.Component {
 	constructor() {
@@ -11,27 +11,40 @@ class TripInfo extends React.Component {
 	   this.state = {
 		 items: [],
 	   }
-	   this.getItems(location)
+
 	 }
 
+	 componentDidMount(){
+		const  tripid  = this.props.match.params.id
+ 		const { trips }  = this.props
+ 		const trip = trips.find((t)=> t.id === parseInt(tripid))
+		console.log(tripid);
+		console.log(trips);
+		console.log(trip);
+		console.log(trip.locations[0].location);
+		let location = trip.locations[0].location.split(",").shift()
+		console.log(location);
+		this.getItems(location)
+	 }
 
-	 getItems(location) {
+	getItems(location) {
 		fetch("http://api.pexels.com/v1/search?query="+location +"&per_page=15&page=1", {
 			headers: {
 				'Authorization': '563492ad6f9170000100000195827ff0a5ad4ba1ac6c79e2c59c8c62'
 			}
 		})
-		 .then((response) => {
+		.then((response) => {
 		   console.log("photos",response);
-			   return response.json()
-		   }).
-		   then((items) => {
-			   console.log("Items",items);
-			   this.setState({
-				   items: items.photos
-			   })
+			return response.json()
+	   }).
+		then((items) => {
+			console.log("Items",items);
+			this.setState({
+			   items: items.photos
+		   })
 	   })
-	   }
+	}
+
 		handleDelete = () =>{
 			this.props.onDelete(this.props.match.params.id)
 		}
@@ -62,11 +75,6 @@ class TripInfo extends React.Component {
 			maxWidth: 128
 		}
 
-		if (trips.length) {
-				this.getItems(trip.locations.shift.location)
-		}
-
-
 		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
@@ -79,7 +87,7 @@ class TripInfo extends React.Component {
 								const tripname = trip.name
 								return (
 									<>
-									<Card>
+									<Card key={i}>
 										<CardBody>
 											<CardTitle>{tripname}</CardTitle>
 											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
