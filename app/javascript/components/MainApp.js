@@ -13,6 +13,8 @@ import NewTrip from "./pages/NewTrip"
 import NewTripLocations from './pages/NewTripLocations'
 import Topbar from './Topbar'
 import Top from './Top'
+import EditTrip from './pages/EditTrip'
+import EditTripLocation from './pages/EditTripLocation'
 
 class MainApp extends React.Component {
 	constructor(props){
@@ -23,12 +25,9 @@ class MainApp extends React.Component {
 		this.getTrips()
 	}
 
-	componentDidMount(){
-		// this.getTrips()
-	}
 
 	// gets trips from trips database in backend
-		getTrips = () =>{
+	getTrips = () =>{
 		fetch("/trips")
 		.then((response)=>{
 			if(response.status === 200){
@@ -41,70 +40,101 @@ class MainApp extends React.Component {
 	}
 
 	//this creates trip and puts it in the database
-		createTrip = (trip) =>{
-			 fetch('/trips', {
-				body: JSON.stringify(trip),
-				headers:{
-					'Content-Type': 'application/json'
-				},
-				method: "POST"
-			})
-			.then((response) => {
-				if(response.ok){
-					return this.getTrips()
-				}
-			})
-		}
-
-
-		//delete funtionality
-		deleteTrip = (id)=> {
-			return fetch(`/trips/${id}` ,{
-				method: 'DELETE'
-			})
-			.then((response)=> {
-				if(response.ok){
+	createTrip = (trip) =>{
+		 fetch('/trips', {
+			body: JSON.stringify(trip),
+			headers:{
+				'Content-Type': 'application/json'
+			},
+			method: "POST"
+		})
+		.then((response) => {
+			if(response.ok){
 				return this.getTrips()
 			}
 		})
 	}
 
-  render () {
-	  const todayDate = new Date().toISOString().slice(0,10)
-      const {
-      signed_in,
-      sign_in_route,
-      sign_out_route,
-	  current_user
-    } = this.props
+
+		//delete funtionality
+	deleteTrip = (id)=> {
+		return fetch(`/trips/${id}` ,{
+			method: 'DELETE'
+		})
+		.then((response)=> {
+			if(response.ok){
+				return this.getTrips()
+			}
+		})
+	}
 
 
-    return (
-    <Router>
-          <React.Fragment>
+	editTrip = (form)=> {
+		let trip = {
+			user_id: this.props.current_user.id ,
+			name: form.name,
+			locations_attributes: form.locations
+		}
+		console.log("API call",trip);
+		return fetch (`/trips/${form.id}`, {
+			body: JSON.stringify(trip),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			method: 'PUT'
+		})
+		.then ((response)=> {
+			console.log("response",response);
+			if (response.ok){
+				return this.getTrips()
+			}
+		})
+	}
 
-      		{/*nav bar*/}
-		  {/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
-		  <Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} />
-
-          <Switch>
-
-		   <Route exact path="/trips/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
-
-		  <Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
-
-		  <Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
-
-		  <Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
-
-		  <Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
+  	render () {
+		const todayDate = new Date().toISOString().slice(0,10)
+    	const {
+	      signed_in,
+	      sign_in_route,
+	      sign_out_route,
+		  current_user
+	    } = this.props
 
 
-          </Switch>
+	    return (
+	    <Router>
+	         <React.Fragment>
 
-	  	</React.Fragment>
-	   </Router>
-    );
+	      	{/*nav bar*/}
+			{/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
+			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} />
+
+
+	        <Switch>
+
+			<Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
+
+			<Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
+
+			<Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
+
+			//route for new trips
+			<Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
+			<Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
+			//end of new trip routes
+
+			//route  for edit trip
+			<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user }
+			  current_date ={ todayDate } trips={this.state.trips} /> } />
+			<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
+
+			//end of edit trip route
+
+	        </Switch>
+
+		  	</React.Fragment>
+		   </Router>
+	    );
   }
 }
 

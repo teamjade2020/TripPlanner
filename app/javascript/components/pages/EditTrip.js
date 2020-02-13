@@ -4,39 +4,58 @@ import { Link } from "react-router-dom"
 
 
 //pages
-import NewTripLocations from './NewTripLocations'
+import EditTripLocation from './EditTripLocation'
 
 
-class NewTrip extends React.Component {
+class EditTrip extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
 			success:false,
+			tripid: props.match.params.id,
+
 			form:{
 				user_id: this.props.current_user.id ,
 				name:'',
-				locations_attributes:[ ]
-			},
-			nameValid: false
+				locations:[{
+					id: '',
+					location:'',
+					start_date:'',
+					end_date: '',
+					details:''
+			}]
+			}
 		}
+	}
+
+	componentDidMount(){
+		this.setForm()
+	}
+
+	setForm = () =>{
+		const { form } = this.state
+		const { trips } = this.props
+		const trip = trips.find((t)=> t.id === parseInt(this.state.tripid))
+		form.name = trip.name
+		form.locations = trip.locations
+		this.setState({form: trip})
+		this.setState({success: true})
+
 	}
 
 	handleChange = (e) => {
 		let {form} = this.state
 		form[e.target.name] = e.target.value
-		if (form.name !== '') {
-			this.setState({nameValid: true})
-		} else {
-			this.setState({nameValid: false})
-		}
 		this.setState({form: form})
+
 	}
 
 	handleSubmit = (locations) => {
 		let {form} = this.state
-		this.state.form.locations_attributes.push(locations)
+		this.state.form.locations.push(locations)
 		this.setState({form: form})
-		this.props.onSubmit(this.state.form)
+		console.log(form);
+		this.props.onEdit(this.state.form)
 	}
 
 	render() {
@@ -47,16 +66,15 @@ class NewTrip extends React.Component {
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
 							<Input
-								valid={this.state.nameValid === true}
-								invalid={this.state.nameValid === false}
 								type="text"
 								name="name"
 								id="name"
 								onChange={this.handleChange}
 								value={this.state.form.name}
-								placeholder="Name Your Trip" />
+								/>
 						</FormGroup>
-						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
+						{this.state.success &&
+						<EditTripLocation onEdit={this.handleSubmit} locations={this.state.form.locations}/> }
 					</Form>
 				</Container>
 			</React.Fragment>
@@ -65,4 +83,4 @@ class NewTrip extends React.Component {
 
 
 }
-export default NewTrip;
+export default EditTrip;

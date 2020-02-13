@@ -10,14 +10,12 @@ class Dashboard extends React.Component {
 
 	render() {
 
-
 		const{current_user, trips, current_date }=this.props
 
 		const trip = trips.filter((a,i)=>{
 			return(
 				a.user_id === current_user.id
 			)
-
 		})
 
 		const imgStyle = {
@@ -90,8 +88,10 @@ class Dashboard extends React.Component {
 													<CardSubtitle>Start: {formatDay1()}</CardSubtitle>
 													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
 													<CardText> Days Until Trip: {daystil}</CardText>
-													<Link to={`/trips/${tripid}`} >
-													<Button  color="primary" >More Info</Button> </Link>
+
+
+													<Button href={`/tripinfo/${tripid}`}>More Info</Button>
+
 
 												</Col>
 											</Row>

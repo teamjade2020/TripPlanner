@@ -66,7 +66,7 @@ class TripInfo extends React.Component {
 		}
 
 	render(){
-		console.log(this.props);
+
 		const  tripid  = this.props.match.params.id
 		const { trips }  = this.props
 		const trip = trips.find((t)=> t.id === parseInt(tripid))
@@ -90,11 +90,14 @@ class TripInfo extends React.Component {
 									<Card key={i}>
 										<CardBody>
 											<CardTitle>{tripname}</CardTitle>
+
 											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
+
 											<CardSubtitle>Location: {v.location}</CardSubtitle>
 											<CardSubtitle>Start Date:{v.start_date} End Date:{v.end_date}</CardSubtitle>
 											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link>
+											<Link to={`/edit/${trip.id}`}> Edit Trip </Link>
 										</CardBody>
 									</Card>
 									</>
