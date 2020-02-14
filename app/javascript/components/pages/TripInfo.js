@@ -78,7 +78,7 @@ class TripInfo extends React.Component {
 		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
-			<h1> Trip Info </h1>
+			<h1 class="text-center"> Trip Info </h1>
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -89,6 +89,7 @@ class TripInfo extends React.Component {
 								const day1 = Date.parse(current_date)
 								const day2 = Date.parse(v.start_date)
 								const daystil = (day2 - day1) / (1000 * 3600 * 24)
+
 								//start date format
 								const formatDay1 = () => {
 									let date = new Date(v.start_date)
@@ -104,7 +105,6 @@ class TripInfo extends React.Component {
 									return `${m}/${d}/${y}`
 								}
 
-								//end date format
 								const formatDay2 = () => {
 									let date = new Date(v.end_date)
 									let d = date.getDate()+1
@@ -118,18 +118,20 @@ class TripInfo extends React.Component {
 									}
 									return `${m}/${d}/${y}`
 								}
+								//end date format
 								return (
 									<>
 									<Card key={i}>
 										<CardBody>
-											<CardTitle>{tripname}</CardTitle>
-
+											<CardTitle className="text-center">{tripname}</CardTitle>
+											< hr />
 											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
 
 											<CardSubtitle>Location: {v.location}</CardSubtitle>
 											<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
 											<CardSubtitle> End Date:{formatDay2()}</CardSubtitle>
+											<CardSubtitle> Details: {v.details}</CardSubtitle>
 											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link> &nbsp;
 											<Link to={`/edit/${trip.id}`}> Edit Trip </Link>
 										</CardBody>

@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
 
   		return (
 			<Container>
-			<h1> Upcoming Trips </h1>
+			<h1 class="text-center"> Upcoming Trips </h1>
 				<Row >
 					<Col>
 						<CardDeck style ={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
@@ -77,9 +77,10 @@ class Dashboard extends React.Component {
 										<CardBody>
 											<Row>
 												<Col>
-													<CardTitle className="text-center">{tripname}</CardTitle>
+													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
 												</Col>
 											</Row>
+
 											<Row>
 												<Col md={3}>
 													<CardImg left src={Pic} style={imgStyle} alt="travel image" />
