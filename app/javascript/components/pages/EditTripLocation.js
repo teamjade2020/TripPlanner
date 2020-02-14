@@ -20,6 +20,7 @@ class EditTripLocations extends React.Component {
 		}
 
 	componentDidMount(){
+		this.setForm()
 		let {locations} = this.state
 		console.log("In Life Cycle");
 		var places = require('places.js');
@@ -28,12 +29,11 @@ class EditTripLocations extends React.Component {
 		  apiKey: '1beace8bb77d86050f898d516af020c5',
 		  container: document.querySelector('#location')
 	  }).configure({
-		  // type: 'city',
+		  type: 'city',
 	  });
 		placesAutocomplete.on('change', e => {
-		locations['location'] =  e.suggestion.name
-		this.setState({locations: locations})
-		this.setForm()
+			locations['location'] =  e.suggestion.name
+			this.setState({locations: locations})
 		})
 	}
 

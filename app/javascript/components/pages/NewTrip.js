@@ -29,6 +29,7 @@ class NewTrip extends React.Component {
 		this.setState({form: form})
 	}
 
+
 	handleSubmit = (locations) => {
 		let {form} = this.state
 		this.state.form.locations_attributes.push(locations)

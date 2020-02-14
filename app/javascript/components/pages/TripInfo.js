@@ -101,21 +101,6 @@ class TripInfo extends React.Component {
 								const tripid = trip.id
 								const daystil = (Date.parse(v.start_date) - Date.parse(current_date)) / (1000 * 3600 * 24)
 
-
-								const formatDay = (day) => {
-									let date = new Date(day)
-									let d = date.getDate()+1
-									let m = date.getMonth()+1
-									let y = date.getFullYear()
-									if(d<10){
-										d='0'+d;
-									}
-									if(m<10){
-										m='0'+m;
-									}
-									return `${m}/${d}/${y}`
-								}
-
 								return (
 									<>
 									<Card key={i}>
@@ -127,8 +112,8 @@ class TripInfo extends React.Component {
 											onClick={this.changeImage} />
 
 											<CardSubtitle>Location: {v.location}</CardSubtitle>
-											<CardSubtitle>Start Date:{formatDay(v.start_date)}</CardSubtitle>
-											<CardSubtitle> End Date:{formatDay(v.end_date)}
+											<CardSubtitle>Start Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
+											<CardSubtitle> End Date:{(new Date(v.end_date)).toDateString()}
 											</CardSubtitle>
 											<CardSubtitle> Details: {v.details}</CardSubtitle>
 											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link> &nbsp;

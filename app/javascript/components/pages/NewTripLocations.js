@@ -31,7 +31,7 @@ class NewTripLocations extends React.Component {
 
 	handleChange = (e) => {
 		// check if the value is empty(validations)
-		const dateformat = /^d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
+		// const dateformat = /^d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
 		let {locations} = this.state
 		locations[e.target.name] = e.target.value
 		if (locations.location !== '') {

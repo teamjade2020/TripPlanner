@@ -42,20 +42,6 @@ class Dashboard extends React.Component {
 									const daystil = (Date.parse(v.start_date) - Date.parse(current_date)) / (1000 * 3600 * 24)
 
 
-									const formatDay = (day) => {
-										let date = new Date(day)
-										let d = date.getDate()+1
-										let m = date.getMonth()+1
-										let y = date.getFullYear()
-										if(d<10){
-											d='0'+d;
-										}
-										if(m<10){
-											m='0'+m;
-										}
-										return `${m}/${d}/${y}`
-									}
-
 									return (
 									<>
 
@@ -75,8 +61,8 @@ class Dashboard extends React.Component {
 													left src={Pic} style={imgStyle} alt="travel image" />
 												</Col>
 												<Col md={4}>
-													<CardSubtitle>Start: {formatDay(v.start_date)}</CardSubtitle>
-													<CardSubtitle>End: {formatDay(v.end_date)}</CardSubtitle>
+													<CardSubtitle>Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+													<CardSubtitle>End: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
 												</Col>
 												<Col md={3}>
 													<CardText> Days Until Trip: {daystil}</CardText>

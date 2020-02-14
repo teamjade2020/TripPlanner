@@ -36,5 +36,6 @@ class TripsController < ApplicationController
 		@trip = Trip.find(params[:id])
 		emailid = params[:_json]
 		TripMailer.with(trip: @trip).new_trip_email(emailid).deliver_now
+		render json: {success: true}
 	end
 end

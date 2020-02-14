@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
-
 //pages
 import EditTripLocation from './EditTripLocation'
 
@@ -32,7 +31,7 @@ class EditTrip extends React.Component {
 	}
 
 	setForm = () =>{
-		// set the form state based 
+		// set the form state based
 		const { form } = this.state
 		const { trips } = this.props
 		const trip = trips.find((t)=> t.id === parseInt(this.state.tripid))
