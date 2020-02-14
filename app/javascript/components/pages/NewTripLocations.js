@@ -23,6 +23,11 @@ class NewTripLocations extends React.Component {
 		}
 
 
+		success =()=> {
+			alert("You Have Added A New Trip");
+		}
+
+
 	handleChange = (e) => {
 		const dateformat = /^d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
 		let {locations} = this.state

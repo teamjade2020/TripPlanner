@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse } from 'reactstrap';
+import { Link } from "react-router-dom"
 
 
 class PastTrips extends React.Component {
@@ -14,7 +15,7 @@ class PastTrips extends React.Component {
 
   		return (
 			<Container>
-			<h1> Past Trips </h1>
+			<h1 class="text-center"> Past Trips </h1>
 			<Row>
 				<Col>
 					<CardDeck>
@@ -25,6 +26,7 @@ class PastTrips extends React.Component {
 
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
+							const tripid = trip.id
 							//end date format
 							const formatDay1 = () => {
 								let date = new Date(v.start_date)
@@ -62,12 +64,10 @@ class PastTrips extends React.Component {
 										<CardTitle>{tripname}</CardTitle>
 										<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
 										<CardSubtitle>End Date:{formatDay2()}</CardSubtitle>
-										<CardText> sample text</CardText>
-										<UncontrolledCollapse toggler={`#toggler${v.id}`}>
-											<CardText>{ v.location }</CardText>
-											<CardText>{ v.details }</CardText>
-										</UncontrolledCollapse>
-										<Button color="secondary" id={`toggler${v.id}`} style = {{marginBottom: '1rem'}}>View Trip Details</Button>
+										<CardText>{ v.location }</CardText>
+										<CardText>{ v.details }</CardText>
+										<Link to={`/tripinfo/${tripid}`}>More Info</Link>
+
 									</CardBody>
 								</Card>
 								}
