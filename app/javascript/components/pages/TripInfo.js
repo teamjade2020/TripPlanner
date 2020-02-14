@@ -11,19 +11,13 @@ class TripInfo extends React.Component {
 	   this.state = {
 		 items: [],
 	   }
-
 	 }
 
 	 componentDidMount(){
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
-		console.log(tripid);
-		console.log(trips);
-		console.log(trip);
-		console.log(trip.locations[0].location);
 		let location = trip.locations[0].location.split(",").shift()
-		console.log(location);
 		this.getItems(location)
 	 }
 
@@ -34,36 +28,28 @@ class TripInfo extends React.Component {
 			}
 		})
 		.then((response) => {
-		   console.log("photos",response);
 			return response.json()
 	   }).
 		then((items) => {
-			console.log("Items",items);
 			this.setState({
 			   items: items.photos
 		   })
 	   })
 	}
 
-		handleDelete = () =>{
-			this.props.onDelete(this.props.match.params.id)
+	handleDelete = () =>{
+		this.props.onDelete(this.props.match.params.id)
+	}
+
+	changeImage = () => {
+		let {items}  =this.state
+		count = Math.floor(Math.random()*items.length)
+		if (items.length) {
+			let url = items[count].src.medium
+			var imgElement = document.getElementById('imageSrc');
+			imgElement.src = url
 		}
-
-		changeImage = () => {
-
-			let {items}  =this.state
-			// count = count + 1
-			count = Math.floor(Math.random()*items.length)
-			// this.setState({count: count})
-			console.log("API",items[count]);
-			if (items.length) {
-				let url = items[count].src.medium
-				var imgElement = document.getElementById('imageSrc');
-				imgElement.src = url
-
-			}
-
-		}
+	}
 
 	render(){
 
@@ -75,7 +61,6 @@ class TripInfo extends React.Component {
 			maxWidth: 128
 		}
 
-		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
 			<h1> Trip Info </h1>
@@ -148,7 +133,5 @@ class TripInfo extends React.Component {
 
 	}
 }
-
-
 
 export default TripInfo
