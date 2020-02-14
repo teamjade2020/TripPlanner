@@ -150,4 +150,4 @@ class TripInfo extends React.Component {
 
 export default TripInfo
 
-export default TripInfo
+
