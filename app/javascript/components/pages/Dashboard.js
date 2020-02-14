@@ -6,11 +6,12 @@ import Pic from 'images/pic.jpg'
 class Dashboard extends React.Component {
 
 	render() {
-
 		const{current_user, trips, current_date }=this.props
+
 		// find the trips for the logged in user.
 		const trip = trips.filter((a,i)=>
 			{return(a.user_id === current_user.id)})
+
 
 		const imgStyle = {
 			maxHeight: 200,
@@ -56,9 +57,10 @@ class Dashboard extends React.Component {
 											</Row>
 
 											<Row>
-												<Col md={5}>
-													<CardImg className="card  text-center"
-													left src={Pic} style={imgStyle} alt="travel image" />
+
+												<Col md={3}>
+													<CardImg src={Pic} style={imgStyle} alt="travel image" />
+
 												</Col>
 												<Col md={4}>
 													<CardSubtitle>Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>

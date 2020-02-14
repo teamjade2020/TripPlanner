@@ -11,6 +11,7 @@ class TripInfo extends React.Component {
 		 items: [],
 		 email: ''
 	   }
+
 	}
 
 	componentDidMount(){
@@ -22,7 +23,9 @@ class TripInfo extends React.Component {
 		let location = trip.locations[0].location.split(",").shift()
 		// call the IMAGE API
 		this.getItems(location)
+
 	 }
+
 
 	getItems(location) {
 		fetch("https://api.pexels.com/v1/search?query="+location +"&per_page=15&page=1", {
@@ -44,6 +47,7 @@ class TripInfo extends React.Component {
 	handleDelete = () =>{
 		this.props.onDelete(this.props.match.params.id)
 	}
+
 
 	changeImage = () => {
 		// this method is called when the image is clicked,
@@ -79,6 +83,7 @@ class TripInfo extends React.Component {
 		})
 	 }
 
+
 	render(){
 
 		const  tripid  = this.props.match.params.id
@@ -108,7 +113,8 @@ class TripInfo extends React.Component {
 											<CardTitle className="text-center">{tripname}</CardTitle>
 											< hr />
 
-											<CardImg left id="imageSrc" src={Pic}  alt="travel image"
+											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
+
 											onClick={this.changeImage} />
 
 											<CardSubtitle>Location: {v.location}</CardSubtitle>
@@ -140,5 +146,8 @@ class TripInfo extends React.Component {
 	}
 }
 
+
+
+export default TripInfo
 
 export default TripInfo

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
+import { Form, FormFeedback, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 //pages
@@ -21,13 +21,20 @@ class EditTrip extends React.Component {
 					start_date:'',
 					end_date: '',
 					details:''
-			}]
-			}
+					}]
+				},
+			nameValid: false
 		}
 	}
 
 	componentDidMount(){
+		const { form } = this.state
 		this.setForm()
+		if (form.name !== '') {
+			this.setState({nameValid: true})
+		} else {
+			this.setState({nameValid: false})
+		}
 	}
 
 	setForm = () =>{
@@ -39,14 +46,19 @@ class EditTrip extends React.Component {
 		form.locations = trip.locations
 		this.setState({form: trip})
 		this.setState({success: true})
-
+		
 	}
 
 	handleChange = (e) => {
 		let {form} = this.state
-		form[e.target.name] = e.target.value
+		let {trips} = this.state
 		this.setState({form: form})
-
+		form[e.target.name] = e.target.value
+		if (form.name !== '') {
+			this.setState({nameValid: true})
+		} else {
+			this.setState({nameValid: false})
+		}
 	}
 
 	handleSubmit = (locations) => {
@@ -64,15 +76,17 @@ class EditTrip extends React.Component {
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
 							<Input
+								valid={this.state.nameValid === true}
+								invalid={this.state.nameValid === false}
 								type="text"
 								name="name"
 								id="name"
 								onChange={this.handleChange}
-								value={this.state.form.name}
-								/>
+								value={this.state.form.name} />
+							<FormFeedback invalid>This should not be empty!</FormFeedback>
 						</FormGroup>
 						{this.state.success &&
-						<EditTripLocation onEdit={this.handleSubmit} locations={this.state.form.locations}/> }
+						<EditTripLocation nameValid = {this.state.nameValid} onEdit={this.handleSubmit} locations={this.state.form.locations}/> }
 					</Form>
 				</Container>
 			</React.Fragment>

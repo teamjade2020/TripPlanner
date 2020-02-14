@@ -18,9 +18,11 @@ class NewTripLocations extends React.Component {
 			locationValid: false,
 			start_dateValid: false,
 			end_dateValid: false,
+
 			fieldsValid: false
 		}
 		this.handleChange = this.handleChange.bind(this);
+
 	}
 
 
@@ -64,28 +66,30 @@ class NewTripLocations extends React.Component {
 		let {locations} = this.state
 		var places = require('places.js');
 		var placesAutocomplete = places({
-			appId: 'plUPETZRZK4Z',
-			apiKey: '1beace8bb77d86050f898d516af020c5',
-			container: document.querySelector('#location'),
-	  	}).configure({
-			type: 'city',
+
+		  appId: 'plUPETZRZK4Z',
+		  apiKey: '1beace8bb77d86050f898d516af020c5',
+		  container: document.querySelector('Input#location'),
+	  		}).configure({
+		  type: 'city',
 	  	});
 		placesAutocomplete.on('change', e => {
-			locations['location'] =  e.suggestion.name
-			this.setState({locations: locations})
-		})
+		locations['location'] =  e.suggestion.name
+		this.setState({locations: locations})
+		});
+
 	}
 
 	render() {
-		const { locationValid, start_dateValid, end_dateValid, fieldsValid } = this.state
+		const { locationValid, start_dateValid, end_dateValid } = this.state
 		const { nameValid } = this.props
 		let button;
 		// display the apropriate button based on the validation checks.
 		let valid = () => {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
-				button = <Link to ="/trips" className="btn btn-primary" active onClick={this.handleSubmit}>Add Trip</Link>
+				button = <Link to ="/trips" className="btn btn-primary" onClick={this.handleSubmit}>Add Trip</Link>
 			} else {
-				button = <Link className="btn btn-danger" disabled onClick={this.handleSubmit}>Add Trip</Link>
+				button = <Link className="btn btn-danger">Add Trip</Link>
 			}
 		}
 		valid()
@@ -96,7 +100,7 @@ class NewTripLocations extends React.Component {
 
 			<FormGroup>
 			<Label for="location">Trip Location</Label>
-				<input
+				<Input
 					valid={this.state.locationValid === true}
 					invalid={this.state.locationValid === false}
 					type="text"
@@ -105,8 +109,7 @@ class NewTripLocations extends React.Component {
 					onChange={this.handleChange}
 					value={this.state.locations.location}
 					placeholder="Enter Location" />
-			<FormFeedback invalid>This should not be empty!</FormFeedback>
-
+				<FormFeedback invalid>This should not be empty!</FormFeedback>
       		</FormGroup>
 
 			<Row>
@@ -152,7 +155,6 @@ class NewTripLocations extends React.Component {
 					value={this.state.locations.details}
 					placeholder="Body" />
       		</FormGroup>
-
 			{this.state.success && <Redirect to="/trips" />}
 			{button}
 			</React.Fragment>
