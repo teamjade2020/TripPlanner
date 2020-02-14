@@ -9,9 +9,7 @@ class Dashboard extends React.Component {
 
 
 	render() {
-
 		const{current_user, trips, current_date }=this.props
-
 		const trip = trips.filter((a,i)=>{
 			return(
 				a.user_id === current_user.id

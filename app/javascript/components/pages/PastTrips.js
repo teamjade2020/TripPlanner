@@ -74,10 +74,9 @@ class PastTrips extends React.Component {
 								</>
 							)
 						}
-					)}
+						)}
 						</Col>
 					)}
-
 					</CardDeck>
 				</Col>
 			   </Row>

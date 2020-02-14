@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
+import { Form, FormFeedback, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 
@@ -56,6 +56,7 @@ class NewTrip extends React.Component {
 								onChange={this.handleChange}
 								value={this.state.form.name}
 								placeholder="Name Your Trip" />
+							<FormFeedback invalid>This should not be empty!</FormFeedback>
 						</FormGroup>
 						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
 					</Form>
