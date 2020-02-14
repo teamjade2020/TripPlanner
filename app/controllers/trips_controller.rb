@@ -8,9 +8,10 @@ class TripsController < ApplicationController
     end
 
     def create
-        tripnew = Trip.new(trip_params)
-        if tripnew.save
-            render json: tripnew
+        @tripnew = Trip.new(trip_params)
+        if @tripnew.save
+            render json: @tripnew
+			TripMailer.with(trip: @tripnew).new_trip_email.deliver_now
         end
     end
 
@@ -30,4 +31,10 @@ class TripsController < ApplicationController
 			render json: @tripupdate
 		end
     end
+
+	def email
+		@trip = Trip.find(params[:id])
+		emailid = params[:_json]
+		TripMailer.with(trip: @trip).new_trip_email(emailid).deliver_now
+	end
 end

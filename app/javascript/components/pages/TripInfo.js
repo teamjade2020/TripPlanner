@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container } from 'reactstrap';
+import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, Input } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import Pic from 'images/pic.jpg'
 var count =0
@@ -10,11 +10,12 @@ class TripInfo extends React.Component {
 	   super()
 	   this.state = {
 		 items: [],
+		 email: ''
 	   }
 
 	 }
 
-	 componentDidMount(){
+	componentDidMount(){
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
@@ -45,25 +46,47 @@ class TripInfo extends React.Component {
 	   })
 	}
 
-		handleDelete = () =>{
-			this.props.onDelete(this.props.match.params.id)
+	handleDelete = () =>{
+		this.props.onDelete(this.props.match.params.id)
+	}
+
+	changeImage = () => {
+
+		let {items}  =this.state
+		// count = count + 1
+		count = Math.floor(Math.random()*items.length)
+		// this.setState({count: count})
+		console.log("API",items[count]);
+		if (items.length) {
+			let url = items[count].src.medium
+			var imgElement = document.getElementById('imageSrc');
+			imgElement.src = url
+
 		}
 
-		changeImage = () => {
+	}
 
-			let {items}  =this.state
-			// count = count + 1
-			count = Math.floor(Math.random()*items.length)
-			// this.setState({count: count})
-			console.log("API",items[count]);
-			if (items.length) {
-				let url = items[count].src.medium
-				var imgElement = document.getElementById('imageSrc');
-				imgElement.src = url
+	handleChange = () => {
+		this.setState({email: event.target.value})
+	}
 
+	handleSubmit = () => {
+		fetch(`http://localhost:3000/${this.props.match.params.id}/mailer`,{
+			method: "POST",
+			body: JSON.stringify(this.state.email),
+			headers: {
+			  'Content-Type': 'application/json'
+			},
+		}).then(
+			(response) => (response.json())
+		).then((response)=>{
+			if (response.status === 'success'){
+			alert("Message Sent.");
+			}else if(response.status === 'fail'){
+			alert("Message failed to send.")
 			}
-
-		}
+		})
+	 }
 
 	render(){
 
@@ -105,6 +128,11 @@ class TripInfo extends React.Component {
 								}
 							)}
 							</Col>
+							<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+							<Link to="/trips">
+							<Button onClick={this.handleSubmit}>Send email
+							</Button>
+							</Link>
 						</CardDeck>
 					</Col>
 				</Row>
