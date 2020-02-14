@@ -28,7 +28,7 @@ class TripInfo extends React.Component {
 	 }
 
 	getItems(location) {
-		fetch("http://api.pexels.com/v1/search?query="+location +"&per_page=15&page=1", {
+		fetch("https://api.pexels.com/v1/search?query="+location +"&per_page=15&page=1", {
 			headers: {
 				'Authorization': '563492ad6f9170000100000195827ff0a5ad4ba1ac6c79e2c59c8c62'
 			}
