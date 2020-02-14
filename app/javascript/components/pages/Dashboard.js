@@ -103,13 +103,10 @@ class Dashboard extends React.Component {
 												<Col md={3}>
 													<CardText> Days Until Trip: {daystil}</CardText>
 
-<<<<<<< HEAD
+
 													<Link to={`/tripinfo/${tripid}`}>
 													<Button href={`/tripinfo/${tripid}`}>More Info</Button></Link>
-=======
 
-													<Link to={`/tripinfo/${tripid}`}>More Info</Link>
->>>>>>> master
 
 
 												</Col>
