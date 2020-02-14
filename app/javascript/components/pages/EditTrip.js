@@ -13,7 +13,6 @@ class EditTrip extends React.Component {
 		this.state = {
 			success:false,
 			tripid: props.match.params.id,
-
 			form:{
 				user_id: this.props.current_user.id ,
 				name:'',
@@ -33,6 +32,7 @@ class EditTrip extends React.Component {
 	}
 
 	setForm = () =>{
+		// set the form state based 
 		const { form } = this.state
 		const { trips } = this.props
 		const trip = trips.find((t)=> t.id === parseInt(this.state.tripid))
@@ -54,7 +54,6 @@ class EditTrip extends React.Component {
 		let {form} = this.state
 		this.state.form.locations.push(locations)
 		this.setState({form: form})
-		console.log(form);
 		this.props.onEdit(this.state.form)
 	}
 

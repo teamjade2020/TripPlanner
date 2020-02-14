@@ -4,14 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>You got a new order from <%= @trip.name %>!</p>
+    <p>You are going on a holiday--- <%= @trip.name %>!</p>
     <p>
-    Order details<br>
+    Trip details<br>
     --------------------------
     </p>
     <p>Name: <%= @trip.name %></p>
-	<p>Location: <%= @trip.locations %><p>
-    Message:<br>
+	<p>Location: <%= @location.location %></p>
+	<p>You are leaving on: <%= @location.start_date %></p>
+	<p>You wiil be home by: <%= @location.end_date %></p>
+    Message:<%= @location.details %> <br>
     ----------
 
   </body>
