@@ -11,7 +11,6 @@ class TripsController < ApplicationController
         @tripnew = Trip.new(trip_params)
         if @tripnew.save
             render json: @tripnew
-			TripMailer.with(trip: @tripnew).new_trip_email.deliver_now
         end
     end
 
