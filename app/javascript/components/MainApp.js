@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Navbar, NavItem } from 'reactstrap'
 
-
-
 //pages
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
@@ -23,7 +21,6 @@ class MainApp extends React.Component {
 		}
 		this.getTrips()
 	}
-
 
 	// gets trips from trips database in backend
 	getTrips = () =>{

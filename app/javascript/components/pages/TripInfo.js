@@ -110,7 +110,7 @@ class TripInfo extends React.Component {
 										<CardBody>
 											<CardTitle className="text-center">{tripname}</CardTitle>
 											< hr />
-											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
+											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
 
 											<CardSubtitle>Location: {v.location}</CardSubtitle>

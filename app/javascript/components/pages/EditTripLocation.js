@@ -19,7 +19,6 @@ class EditTripLocations extends React.Component {
 				locationValid: false,
 				start_dateValid: false,
 				end_dateValid: false,
-				fieldsValid: false
 			}
 		}
 
