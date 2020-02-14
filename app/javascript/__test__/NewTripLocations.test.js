@@ -69,6 +69,14 @@ describe('Sample Test', () => {
         expect(mockFn).toHaveBeenCalledTimes(0)
     })
 
+<<<<<<< HEAD
+	//was working on this before leaving
+    // const input = component.find('Input').at()
+    const button = component.find('Link').at(0);
+    button.simulate('click');
+    expect(mockFn).toHaveBeenCalled()
+})
+=======
     it('has a handleSubmit method if input fields are valid', () => {
         let props = {
             nameValid: true
@@ -86,3 +94,4 @@ describe('Sample Test', () => {
     })
     
 })
+>>>>>>> master

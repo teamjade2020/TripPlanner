@@ -38,6 +38,7 @@ class EditTrip extends React.Component {
 	}
 
 	setForm = () =>{
+		// set the form state based
 		const { form } = this.state
 		const { trips } = this.props
 		const trip = trips.find((t)=> t.id === parseInt(this.state.tripid))

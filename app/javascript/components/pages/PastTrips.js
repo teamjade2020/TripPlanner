@@ -6,11 +6,10 @@ import { Link } from "react-router-dom"
 class PastTrips extends React.Component {
 	render() {
 		const{current_user, trips, current_date }=this.props
-		const trip = trips.filter((a,i)=>{
-			return(
-				a.user_id === current_user.id
-			)
-		})
+
+		const trip = trips.filter((a,i)=>
+		{return(a.user_id === current_user.id)})
+
 
   		return (
 			<Container>
@@ -19,16 +18,18 @@ class PastTrips extends React.Component {
 				<Col>
 					<CardDeck>
 
+
 					{trip.map((trip, i) =>
 
 						<Col xs={12} key={i}>
 
+
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
 							const tripid = trip.id
-							//end date format
-							const formatDay1 = () => {
-								let date = new Date(v.start_date)
+							// correcting the date format
+							const formatDay = (day) => {
+								let date = new Date(day)
 								let d = date.getDate()+1
 								let m = date.getMonth()+1
 								let y = date.getFullYear()
@@ -41,30 +42,16 @@ class PastTrips extends React.Component {
 								return `${m}/${d}/${y}`
 							}
 
-							//end date format
-							const formatDay2 = () => {
-								let date = new Date(v.end_date)
-								let d = date.getDate()+1
-								let m = date.getMonth()+1
-								let y = date.getFullYear()
-								if(d<10){
-									d='0'+d;
-								}
-								if(m<10){
-									m='0'+m;
-								}
-								return `${m}/${d}/${y}`
-							}
 							return (
 								<>
 								{ current_date > v.start_date &&
 								<Card>
 									<CardBody>
 										<CardTitle>{tripname}</CardTitle>
-										<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
-										<CardSubtitle>End Date:{formatDay2()}</CardSubtitle>
-										<CardText>{ v.location }</CardText>
-										<CardText>{ v.details }</CardText>
+										<CardSubtitle>Start Date:{formatDay(v.start_date)}</CardSubtitle>
+										<CardSubtitle>End Date:{formatDay(v.end_date)}</CardSubtitle>
+										<CardText>Location: { v.location }</CardText>
+										<CardText>Details: { v.details }</CardText>
 										<Link to={`/tripinfo/${tripid}`}>More Info</Link>
 
 									</CardBody>
@@ -72,9 +59,9 @@ class PastTrips extends React.Component {
 								}
 								</>
 							)
-						}
-						)}
-						</Col>
+
+						})}</Col>
+
 					)}
 					</CardDeck>
 				</Col>

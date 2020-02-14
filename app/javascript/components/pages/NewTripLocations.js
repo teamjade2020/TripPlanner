@@ -18,18 +18,22 @@ class NewTripLocations extends React.Component {
 			locationValid: false,
 			start_dateValid: false,
 			end_dateValid: false,
-			}
+
+			fieldsValid: false
+		}
 		this.handleChange = this.handleChange.bind(this);
-		}
+
+	}
 
 
-		success =()=> {
-			alert("You Have Added A New Trip");
-		}
+	success =()=> {
+		alert("You Have Added A New Trip");
+	}
 
 
 	handleChange = (e) => {
-		const dateformat = /^d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
+		// check if the value is empty(validations)
+		// const dateformat = /^d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
 		let {locations} = this.state
 		locations[e.target.name] = e.target.value
 		if (locations.location !== '') {
@@ -58,26 +62,29 @@ class NewTripLocations extends React.Component {
 
 
 	componentDidMount(){
+		// call the places API, to enable it on location input.
 		let {locations} = this.state
 		var places = require('places.js');
 		var placesAutocomplete = places({
+
 		  appId: 'plUPETZRZK4Z',
 		  apiKey: '1beace8bb77d86050f898d516af020c5',
 		  container: document.querySelector('Input#location'),
-	  }).configure({
+	  		}).configure({
 		  type: 'city',
-	  });
+	  	});
 		placesAutocomplete.on('change', e => {
 		locations['location'] =  e.suggestion.name
 		this.setState({locations: locations})
 		});
-	}
 
+	}
 
 	render() {
 		const { locationValid, start_dateValid, end_dateValid } = this.state
 		const { nameValid } = this.props
 		let button;
+		// display the apropriate button based on the validation checks.
 		let valid = () => {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
 				button = <Link to ="/trips" className="btn btn-primary" onClick={this.handleSubmit}>Add Trip</Link>

@@ -23,15 +23,16 @@ class EditTripLocations extends React.Component {
 		}
 
 	componentDidMount(){
+		this.setForm()
 		let {locations} = this.state
 		var places = require('places.js');
 		var placesAutocomplete = places({
 		  appId: 'plUPETZRZK4Z',
 		  apiKey: '1beace8bb77d86050f898d516af020c5',
 		  container: document.querySelector('#location'),
-	  }).configure({
+	  	}).configure({
 		  type: 'city',
-	  });
+	  	});
 		placesAutocomplete.on('change', e => {
 		locations['location'] =  e.suggestion.name
 		this.setState({locations: locations})
@@ -53,6 +54,7 @@ class EditTripLocations extends React.Component {
 			this.setState({end_dateValid: false})
 		}
 		this.setState({locations: locations})
+
 	}
 
 	setForm = () =>{
@@ -106,7 +108,8 @@ class EditTripLocations extends React.Component {
 			}
 		}
 		valid()
-		
+
+
 		return(
 			<>
 			<React.Fragment>

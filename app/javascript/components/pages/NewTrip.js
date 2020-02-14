@@ -1,9 +1,6 @@
 import React from 'react';
 import { Form, FormFeedback, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
-
-
-//pages
 import NewTripLocations from './NewTripLocations'
 
 
@@ -31,6 +28,7 @@ class NewTrip extends React.Component {
 		}
 		this.setState({form: form})
 	}
+
 
 	handleSubmit = (locations) => {
 		let {form} = this.state
@@ -64,7 +62,5 @@ class NewTrip extends React.Component {
 			</React.Fragment>
 		)
 	}
-
-
 }
 export default NewTrip;

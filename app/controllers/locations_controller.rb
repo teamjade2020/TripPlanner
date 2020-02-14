@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
     end
 
 	def update
+		# find the ID based on the param and update the params.
 		@location = Location.find(params[:id])
 		@location.update(location_params)
 	end
