@@ -63,7 +63,7 @@ it('takes details ', () => {
     const mockFn = jest.fn();
     const component = shallow(<NewTripLocations onSubmit={mockFn} /> ,{ disableLifecycleMethods: true } );
 
-//was working on this before leaving
+	//was working on this before leaving
     // const input = component.find('Input').at()
     const button = component.find('Link').at(0);
     button.simulate('click');
