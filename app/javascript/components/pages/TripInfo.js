@@ -91,7 +91,7 @@ class TripInfo extends React.Component {
 	render(){
 
 		const  tripid  = this.props.match.params.id
-		const { trips }  = this.props
+		const { trips, current_date }  = this.props
 		const trip = trips.find((t)=> t.id === parseInt(tripid))
 		const imgStyle = {
 			maxHeight: 128,
@@ -101,28 +101,65 @@ class TripInfo extends React.Component {
 		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
-			<h1> Trip Info </h1>
+			<h1 class="text-center"> Trip Info </h1>
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
 							<Col>
 							{trip && trip.locations.map ((v, i)=>{
 								const tripname = trip.name
+								const tripid = trip.id
+								const day1 = Date.parse(current_date)
+								const day2 = Date.parse(v.start_date)
+								const daystil = (day2 - day1) / (1000 * 3600 * 24)
+
+								//start date format
+								const formatDay1 = () => {
+									let date = new Date(v.start_date)
+									let d = date.getDate()+1
+									let m = date.getMonth()+1
+									let y = date.getFullYear()
+									if(d<10){
+										d='0'+d;
+									}
+									if(m<10){
+										m='0'+m;
+									}
+									return `${m}/${d}/${y}`
+								}
+
+								const formatDay2 = () => {
+									let date = new Date(v.end_date)
+									let d = date.getDate()+1
+									let m = date.getMonth()+1
+									let y = date.getFullYear()
+									if(d<10){
+										d='0'+d;
+									}
+									if(m<10){
+										m='0'+m;
+									}
+									return `${m}/${d}/${y}`
+								}
+								//end date format
 								return (
 									<>
 									<Card key={i}>
 										<CardBody>
-											<CardTitle>{tripname}</CardTitle>
-
+											<CardTitle className="text-center">{tripname}</CardTitle>
+											< hr />
 											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
 
 											<CardSubtitle>Location: {v.location}</CardSubtitle>
-											<CardSubtitle>Start Date:{v.start_date} End Date:{v.end_date}</CardSubtitle>
-											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link>
+											<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
+											<CardSubtitle> End Date:{formatDay2()}</CardSubtitle>
+											<CardSubtitle> Details: {v.details}</CardSubtitle>
+											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link> &nbsp;
 											<Link to={`/edit/${trip.id}`}> Edit Trip </Link>
 										</CardBody>
 									</Card>
+
 									</>
 									)
 								}
