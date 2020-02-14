@@ -10,19 +10,18 @@ class PastTrips extends React.Component {
 			return(
 				a.user_id === current_user.id
 			)
-
 		})
 
   		return (
 			<Container>
-			<h1 class="text-center"> Past Trips </h1>
+			<h1 className="text-center"> Past Trips </h1>
 			<Row>
 				<Col>
 					<CardDeck>
 
-					{trip.map((trip) =>
+					{trip.map((trip, i) =>
 
-						<Col xs={12}>
+						<Col xs={12} key={i}>
 
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
