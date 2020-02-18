@@ -98,7 +98,7 @@ class TripInfo extends React.Component {
 		return(
 			<Container>
 
-			<h1 class="text-center" id="header"> Trip Info </h1>
+			<h1 className="text-center" id="header"> Trip Info </h1>
 
 				<Row>
 					<Col xs={12}>
@@ -126,14 +126,14 @@ class TripInfo extends React.Component {
 											Click Me!
 											</CardSubtitle>
 
-											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
+											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
 
 											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
 
-											<CardSubtitle>Start Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
+											<CardSubtitle>Start Date: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
 
-											<CardSubtitle> End Date:{(new Date(v.end_date)).toDateString()}</CardSubtitle>
+											<CardSubtitle> End Date: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
 											</Col>
 
 											<Col md={6} id="extra">
@@ -147,6 +147,19 @@ class TripInfo extends React.Component {
 											<Link to={`/edit/${trip.id}`}><Button>Edit Trip</Button></Link>
 											</Col>
 											</Row>
+											<Row className="text-center" id="extra">
+											<CardSubtitle className="text-center" >
+											Share Trip With Your Friends
+											</CardSubtitle>
+											<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+
+											<div id="dates">
+											<Link to="/trips">
+											<Button onClick={this.handleSubmit}>Send email
+											</Button>
+											</Link>
+											</div>
+											</Row>
 										</CardBody>
 									</Card>
 									</>
@@ -155,12 +168,7 @@ class TripInfo extends React.Component {
 							)}
 							</Col>
 
-							<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
-							<Link to="/trips">
 
-							<Button onClick={this.handleSubmit}>Send email
-							</Button>
-							</Link>
 						</CardDeck>
 					</Col>
 				</Row>

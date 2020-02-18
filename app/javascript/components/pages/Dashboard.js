@@ -20,15 +20,15 @@ class Dashboard extends React.Component {
 
   		return (
 
-			<Container class= "Display" >
-			<h1 class="text-center" id="header"> Upcoming Trips </h1>
+			<Container>
+			<h1 className="text-center" id="header"> Upcoming Trips </h1>
 				<Row >
 					<Col md={12} xs={12}>
 						<CardDeck style ={{display: 'flex', flexDirection: 'column'}} >
 
 							{trip.map((trip,i) =>
 
-								<Col md={8} xs={8} key = {i}>
+								<Col md={12} xs={12} key = {i}>
 
 
 									{trip.locations.map ((v, i)=>{
@@ -53,15 +53,15 @@ class Dashboard extends React.Component {
 
 											<Row>
 												<Col className="text-center" md={4}>
-													<CardImg left src={Pic} style={imgStyle} alt="travel image" />
+													<CardImg src={Pic} style={imgStyle} alt="travel image" />
 												</Col>
 												<Col md={4} className="text-center" id="dates">
 
-													<CardSubtitle id="dates">Start:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
+													<CardSubtitle id="dates">Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
 
 													&nbsp;
 
-													<CardSubtitle>End:{(new Date(v.end_date)).toDateString()}</CardSubtitle>
+													<CardSubtitle>End: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
 
 												</Col>
 												<Col md={4} className="text-center" id="extra">
@@ -85,7 +85,7 @@ class Dashboard extends React.Component {
 					</Col>
 				</Row>
 			</Container>
-			</>
+
 		);
 	}
 };

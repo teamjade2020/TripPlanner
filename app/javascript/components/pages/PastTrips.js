@@ -20,11 +20,9 @@ class PastTrips extends React.Component {
 
   		return (
 			<Container>
-<<<<<<< HEAD
-			<h1 class="text-center" id="header"> Past Trips </h1>
-=======
-			<h1 className="text-center"> Past Trips </h1>
->>>>>>> master
+
+			<h1 className="text-center" id="header"> Past Trips </h1>
+
 			<Row>
 				<Col>
 					<CardDeck>
@@ -51,7 +49,7 @@ class PastTrips extends React.Component {
 
 											<Row>
 												<Col md={6} className="text-center">
-													<CardImg left src={Pic} style={imgStyle} alt="travel image" />
+													<CardImg src={Pic} style={imgStyle} alt="travel image" />
 												</Col>
 												<Col md={6} className="text-center">
 													<CardSubtitle id="dates">Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
