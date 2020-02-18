@@ -119,6 +119,8 @@ class MainApp extends React.Component {
 			<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user }
 			  current_date ={ todayDate } trips={this.state.trips} /> } />
 
+		  	<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} onEdit={ this.editTrip } current_user={ current_user }
+			  current_date ={ todayDate } trips={this.state.trips} /> } />
 
 
 	        </Switch>

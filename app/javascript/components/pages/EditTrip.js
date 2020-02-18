@@ -25,11 +25,13 @@ class EditTrip extends React.Component {
 				},
 			nameValid: false
 		}
+
 	}
 
 	componentDidMount(){
-		const { form } = this.state
 		this.setForm()
+		console.log(this.props);
+		const { form } = this.state
 		if (form.name !== '') {
 			this.setState({nameValid: true})
 		} else {
@@ -39,14 +41,16 @@ class EditTrip extends React.Component {
 
 	setForm = () =>{
 		// set the form state based
+		console.log(this.props);
 		const { form } = this.state
 		const { trips } = this.props
 		const trip = trips.find((t)=> t.id === parseInt(this.state.tripid))
+		console.log(trip);
 		form.name = trip.name
 		form.locations = trip.locations
-		this.setState({form: trip})
+		this.setState({form: form})
 		this.setState({success: true})
-		
+
 	}
 
 	handleChange = (e) => {
