@@ -17,9 +17,7 @@ class PastTrips extends React.Component {
 			<Row>
 				<Col>
 					<CardDeck>
-
-
-					{trip.map((trip, i) =>
+						{trip.map((trip, i) =>
 
 						<Col xs={12} key={i}>
 
@@ -27,20 +25,6 @@ class PastTrips extends React.Component {
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
 							const tripid = trip.id
-							// correcting the date format
-							const formatDay = (day) => {
-								let date = new Date(day)
-								let d = date.getDate()+1
-								let m = date.getMonth()+1
-								let y = date.getFullYear()
-								if(d<10){
-									d='0'+d;
-								}
-								if(m<10){
-									m='0'+m;
-								}
-								return `${m}/${d}/${y}`
-							}
 
 							return (
 								<>
@@ -48,8 +32,8 @@ class PastTrips extends React.Component {
 								<Card>
 									<CardBody>
 										<CardTitle>{tripname}</CardTitle>
-										<CardSubtitle>Start Date:{formatDay(v.start_date)}</CardSubtitle>
-										<CardSubtitle>End Date:{formatDay(v.end_date)}</CardSubtitle>
+										<CardSubtitle>Start Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
+										<CardSubtitle>End Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
 										<CardText>Location: { v.location }</CardText>
 										<CardText>Details: { v.details }</CardText>
 										<Link to={`/tripinfo/${tripid}`}>More Info</Link>

@@ -23,7 +23,6 @@ class EditTripLocations extends React.Component {
 		}
 
 	componentDidMount(){
-		this.setForm()
 		let {locations} = this.state
 		var places = require('places.js');
 		var placesAutocomplete = places({
@@ -37,7 +36,7 @@ class EditTripLocations extends React.Component {
 		locations['location'] =  e.suggestion.name
 		this.setState({locations: locations})
 		});
-		 this.setForm()
+		this.setForm()
 		if (locations.location !== '') {
 			this.setState({locationValid: true})
 		} else {
@@ -59,12 +58,14 @@ class EditTripLocations extends React.Component {
 
 	setForm = () =>{
 		const { locations } = this.state
-		var loc = this.props.locations.shift()
+		var loc = this.props.locations[0]
+		console.log(loc,locations);
 		locations['id'] = loc['id']
 		locations['location'] = loc['location']
 		locations['start_date'] = loc['start_date']
 		locations['end_date'] = loc['end_date']
 		locations['details'] = loc['details']
+
 		this.setState({locations: locations})
 	}
 
@@ -104,7 +105,7 @@ class EditTripLocations extends React.Component {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
 				button = <Link to ="/trips" className= "btn btn-primary" onClick={this.handleEdit}>Edit Trip</Link>
 			} else {
-				button = <Link className= "btn btn-secondary">Edit Trip</Link>
+				button = <Link to="" className= "btn btn-secondary">Edit Trip</Link>
 			}
 		}
 		valid()
@@ -124,7 +125,7 @@ class EditTripLocations extends React.Component {
 					id="location"
 					onChange={this.handleChange}
 					value={this.state.locations.location} />
-				<FormFeedback invalid>This should not be empty!</FormFeedback>
+				<FormFeedback>This should not be empty!</FormFeedback>
       		</FormGroup>
 
 			<Row>
@@ -139,7 +140,7 @@ class EditTripLocations extends React.Component {
 							id="start_date"
 							onChange={this.handleChange}
 							value={this.state.locations.start_date} />
-						<FormFeedback invalid>This should not be empty!</FormFeedback>
+						<FormFeedback>This should not be empty!</FormFeedback>
 					</FormGroup>
 				</Col>
 				<Col md={6}>
@@ -153,7 +154,7 @@ class EditTripLocations extends React.Component {
 							id="end_date"
 							onChange={this.handleChange}
 							value={this.state.locations.end_date} />
-						<FormFeedback invalid>This should not be empty!</FormFeedback>
+						<FormFeedback>This should not be empty!</FormFeedback>
 					</FormGroup>
 				</Col>
 			</Row>

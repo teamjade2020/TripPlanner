@@ -28,6 +28,7 @@ class EditTrip extends React.Component {
 	}
 
 	componentDidMount(){
+		console.log(this.props.trips);
 		const { form } = this.state
 		this.setForm()
 		if (form.name !== '') {
@@ -46,7 +47,7 @@ class EditTrip extends React.Component {
 		form.locations = trip.locations
 		this.setState({form: trip})
 		this.setState({success: true})
-		
+
 	}
 
 	handleChange = (e) => {
@@ -83,7 +84,8 @@ class EditTrip extends React.Component {
 								id="name"
 								onChange={this.handleChange}
 								value={this.state.form.name} />
-							<FormFeedback invalid>This should not be empty!</FormFeedback>
+							<FormFeedback>This should not be empty!
+							</FormFeedback>
 						</FormGroup>
 						{this.state.success &&
 						<EditTripLocation nameValid = {this.state.nameValid} onEdit={this.handleSubmit} locations={this.state.form.locations}/> }
