@@ -72,6 +72,7 @@ class EditTrip extends React.Component {
 		return(
 			<React.Fragment>
 				<Container sm={6}>
+				<h1 class="text-center" id="header"> Edit Trip </h1>
 					<Form>
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
