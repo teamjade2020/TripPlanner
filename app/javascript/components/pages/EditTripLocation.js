@@ -59,7 +59,6 @@ class EditTripLocations extends React.Component {
 	setForm = () =>{
 		const { locations } = this.state
 		var loc = this.props.locations[0]
-		console.log(loc,locations);
 		locations['id'] = loc['id']
 		locations['location'] = loc['location']
 		locations['start_date'] = loc['start_date']
