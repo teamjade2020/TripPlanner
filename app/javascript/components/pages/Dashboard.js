@@ -24,7 +24,6 @@ class Dashboard extends React.Component {
 		        <h1 className="display-3">Hello, {current_user.first_name}</h1>
 		        <p className="lead">Welcome to your travel Dashboard!!!</p>
 		        <hr className="my-2" />
-		        <h1>Upcoming Trips</h1>
 	      	</Jumbotron>
 			<Container>
 			<h1 className="text-center"> Upcoming Trips </h1>
@@ -70,7 +69,7 @@ class Dashboard extends React.Component {
 													<CardText> Days Until Trip: {daystil}</CardText>
 
 													<Link to={`/tripinfo/${tripid}`}>
-													<Button href={`/tripinfo/${tripid}`}>More Info</Button></Link>
+													<Button>More Info</Button></Link>
 												</Col>
 											</Row>
 										</CardBody>

@@ -20,7 +20,8 @@ class TripInfo extends React.Component {
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
 		// From the places API, the location is stored as "San Diego, California,USA". As trip.locations is an array, get the first value from locations array(trip.locations[0]), get the location name form the hash(trip.locations[0].location), split at the "," and shift() to get location name "San Diego"
-		let location = trip.locations[0].location.split(",").shift()
+		let locations = trip.locations[0].location.split(",")
+		let location = locations[0]
 		// call the IMAGE API
 		this.getItems(location)
 
@@ -79,7 +80,7 @@ class TripInfo extends React.Component {
 		}).then(
 			(response) => (response.json())
 		).then((response)=>{
-			alert(response.status)
+				alert("Email Sent")
 		})
 	 }
 
@@ -96,7 +97,7 @@ class TripInfo extends React.Component {
 
 		return(
 			<Container>
-			<h1 class="text-center"> Trip Info </h1>
+			<h1 className="text-center"> Trip Info </h1>
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -149,5 +150,4 @@ class TripInfo extends React.Component {
 
 
 export default TripInfo
-
 
