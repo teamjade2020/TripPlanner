@@ -71,7 +71,7 @@ class TripInfo extends React.Component {
 
 	handleSubmit = () => {
 		//  call the API mailer with emailid and tripid to send the email.
-		fetch(`http://localhost:3000/${this.props.match.params.id}/mailer`,{
+		fetch(`/${this.props.match.params.id}/mailer`,{
 			method: "POST",
 			body: JSON.stringify(this.state.email),
 			headers: {
@@ -150,3 +150,4 @@ class TripInfo extends React.Component {
 
 
 export default TripInfo
+
