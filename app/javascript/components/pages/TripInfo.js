@@ -78,7 +78,7 @@ class TripInfo extends React.Component {
 		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
-			<h1 class="text-center"> Trip Info </h1>
+			<h1 class="text-center" id="header"> Trip Info </h1>
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -121,19 +121,43 @@ class TripInfo extends React.Component {
 								//end date format
 								return (
 									<>
-									<Card key={i}>
+									<Card id="card" key={i}>
 										<CardBody>
-											<CardTitle className="text-center">{tripname}</CardTitle>
-											< hr />
+										<Row>
+										<Col>
+											<CardTitle className="text-center">{tripname}< hr /></CardTitle>
+											</Col>
+										</Row>
+										<Row>
+
+											<Col md={6} className="text-center">
+
+											<CardSubtitle className="text-center">
+											Click Me!
+											</CardSubtitle>
+
 											<CardImg left id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
 											onClick={this.changeImage} />
 
-											<CardSubtitle>Location: {v.location}</CardSubtitle>
+											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
+
 											<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
+
 											<CardSubtitle> End Date:{formatDay2()}</CardSubtitle>
+
+											</Col>
+
+											<Col md={6} id="extra">
 											<CardSubtitle> Details: {v.details}</CardSubtitle>
-											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link> &nbsp;
-											<Link to={`/edit/${trip.id}`}> Edit Trip </Link>
+											</Col>
+											</Row>
+
+											<Row>
+											<Col className="text-center" id="buttons">
+											<Link to="/trips" onClick={this.handleDelete}><Button> Delete Trip </Button></Link> &nbsp;
+											<Link to={`/edit/${trip.id}`}><Button>Edit Trip</Button></Link>
+											</Col>
+											</Row>
 										</CardBody>
 									</Card>
 

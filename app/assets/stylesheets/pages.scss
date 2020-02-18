@@ -1,3 +1,32 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#header{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+#card{
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+#display{
+
+    justify-content: center;
+
+}
+
+#extra{
+    padding-top: 20px;
+
+}
+
+#dates{
+    padding-top: 15px;
+
+}
+
+#buttons{
+    padding-top: 20px;
+}
