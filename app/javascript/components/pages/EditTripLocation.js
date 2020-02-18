@@ -104,7 +104,7 @@ class EditTripLocations extends React.Component {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
 				button = <Link to ="/trips" className= "btn btn-primary" onClick={this.handleEdit}>Edit Trip</Link>
 			} else {
-				button = <Link className= "btn btn-secondary">Edit Trip</Link>
+				button = <a className= "btn btn-secondary text-white">Edit Trip</a>
 			}
 		}
 		valid()
