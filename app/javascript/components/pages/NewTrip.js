@@ -1,9 +1,6 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
+import { Form, FormFeedback, FormGroup, Label, Input, Col, Row, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
-
-
-//pages
 import NewTripLocations from './NewTripLocations'
 
 
@@ -32,6 +29,7 @@ class NewTrip extends React.Component {
 		this.setState({form: form})
 	}
 
+
 	handleSubmit = (locations) => {
 		let {form} = this.state
 		this.state.form.locations_attributes.push(locations)
@@ -43,7 +41,9 @@ class NewTrip extends React.Component {
 		return(
 			<React.Fragment>
 				<Container sm={6}>
+
 				<h1 class="text-center" id="header">Add New Trip</h1>
+
 					<Form>
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
@@ -56,6 +56,7 @@ class NewTrip extends React.Component {
 								onChange={this.handleChange}
 								value={this.state.form.name}
 								placeholder="Name Your Trip" />
+							<FormFeedback invalid>This should not be empty!</FormFeedback>
 						</FormGroup>
 						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
 					</Form>
@@ -63,7 +64,5 @@ class NewTrip extends React.Component {
 			</React.Fragment>
 		)
 	}
-
-
 }
 export default NewTrip;

@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Navbar, NavItem } from 'reactstrap'
 
-
-
 //pages
 import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
@@ -23,7 +21,6 @@ class MainApp extends React.Component {
 		}
 		this.getTrips()
 	}
-
 
 	// gets trips from trips database in backend
 	getTrips = () =>{
@@ -55,7 +52,7 @@ class MainApp extends React.Component {
 	}
 
 
-		//delete funtionality
+	//delete funtionality
 	deleteTrip = (id)=> {
 		return fetch(`/trips/${id}` ,{
 			method: 'DELETE'
@@ -74,7 +71,6 @@ class MainApp extends React.Component {
 			name: form.name,
 			locations_attributes: form.locations
 		}
-		console.log("API call",trip);
 		return fetch (`/trips/${form.id}`, {
 			body: JSON.stringify(trip),
 			headers: {
@@ -83,7 +79,6 @@ class MainApp extends React.Component {
 			method: 'PUT'
 		})
 		.then ((response)=> {
-			console.log("response",response);
 			if (response.ok){
 				return this.getTrips()
 			}
@@ -106,9 +101,7 @@ class MainApp extends React.Component {
 	         <React.Fragment>
 
 	      	{/*nav bar*/}
-			{/* <Topbar signed_in={signed_in} sign_in_route= {sign_in_route} sign_out_route={sign_out_route} /> */}
 			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} new_user_registration_path={new_user_registration_path}/>
-
 
 	        <Switch>
 
@@ -120,15 +113,13 @@ class MainApp extends React.Component {
 
 			//route for new trips
 			<Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
-			<Route exact path="/newtriplocations" render={(props) => <NewTripLocations current_user={ current_user } current_date ={ todayDate }  /> } />
-			//end of new trip routes
+
 
 			//route  for edit trip
 			<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user }
 			  current_date ={ todayDate } trips={this.state.trips} /> } />
-			<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
 
-			//end of edit trip route
+
 
 	        </Switch>
 

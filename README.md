@@ -23,5 +23,34 @@ Things you may want to cover:
 
 * ...
 # TripPlanner
-# TripPlanner
-# TripPlanner
+
+  Tripplanner website that let's you keep tracks of your upcoming and past trips, with autocomplete and image API.
+
+# Table of Contents:
+  
+  1. Installation
+  2. Usage
+  3. Credits
+  
+# Installation:
+
+  - git clone
+  - yarn install
+  - rails db:migrate
+  - rails s
+  
+# Usage:
+  
+  - Sign Up/Sign In to use the app.
+  - Create the trip you are planning next.
+  - Check how the place looks like by clicking the picture in the show page.
+  - Check out your past trips.
+  - Email the trip to your emailId.
+  
+  
+# Credits:
+  - Diego 
+  - Earnesto
+  - Aizada
+  - Jeel Naik
+

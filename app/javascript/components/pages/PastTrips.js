@@ -8,12 +8,10 @@ import Pic from 'images/complete.png'
 class PastTrips extends React.Component {
 	render() {
 		const{current_user, trips, current_date }=this.props
-		const trip = trips.filter((a,i)=>{
-			return(
-				a.user_id === current_user.id
-			)
 
-		})
+		const trip = trips.filter((a,i)=>
+		{return(a.user_id === current_user.id)})
+
 
 		const imgStyle = {
 			maxHeight: 128,
@@ -22,50 +20,27 @@ class PastTrips extends React.Component {
 
   		return (
 			<Container>
+<<<<<<< HEAD
 			<h1 class="text-center" id="header"> Past Trips </h1>
+=======
+			<h1 className="text-center"> Past Trips </h1>
+>>>>>>> master
 			<Row>
 				<Col>
 					<CardDeck>
+						{trip.map((trip, i) =>
 
-					{trip.map((trip) =>
+						<Col xs={12} key={i}>
 
-						<Col xs={12}>
 
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
 							const tripid = trip.id
-							//end date format
-							const formatDay1 = () => {
-								let date = new Date(v.start_date)
-								let d = date.getDate()+1
-								let m = date.getMonth()+1
-								let y = date.getFullYear()
-								if(d<10){
-									d='0'+d;
-								}
-								if(m<10){
-									m='0'+m;
-								}
-								return `${m}/${d}/${y}`
-							}
 
-							//end date format
-							const formatDay2 = () => {
-								let date = new Date(v.end_date)
-								let d = date.getDate()+1
-								let m = date.getMonth()+1
-								let y = date.getFullYear()
-								if(d<10){
-									d='0'+d;
-								}
-								if(m<10){
-									m='0'+m;
-								}
-								return `${m}/${d}/${y}`
-							}
 							return (
 								<>
 								{ current_date > v.start_date &&
+
 									<Card style={{flex: 1}} key = {i} id="card">
 										<CardBody>
 											<Row>
@@ -79,8 +54,8 @@ class PastTrips extends React.Component {
 													<CardImg left src={Pic} style={imgStyle} alt="travel image" />
 												</Col>
 												<Col md={6} className="text-center">
-													<CardSubtitle id="dates">Start: {formatDay1()}</CardSubtitle>
-													<CardSubtitle>End: {formatDay2()}</CardSubtitle>
+													<CardSubtitle id="dates">Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+													<CardSubtitle>End: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
 													<div id="buttons">
 
 													<Link to={`/tripinfo/${tripid}`}><Button>More Info</Button></Link>
@@ -94,11 +69,10 @@ class PastTrips extends React.Component {
 								}
 								</>
 							)
-						}
-					)}
-						</Col>
-					)}
 
+						})}</Col>
+
+					)}
 					</CardDeck>
 				</Col>
 			   </Row>

@@ -1,31 +1,32 @@
 import React from 'react'
-import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container } from 'reactstrap';
+import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, Input } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import Pic from 'images/pic.jpg'
 var count =0
-
 
 class TripInfo extends React.Component {
 	constructor() {
 	   super()
 	   this.state = {
 		 items: [],
+		 email: ''
 	   }
 
-	 }
+	}
 
-	 componentDidMount(){
+	componentDidMount(){
+		// trips array is passed as props, and ID is in url which is passed as params id.
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
-		console.log(tripid);
-		console.log(trips);
-		console.log(trip);
-		console.log(trip.locations[0].location);
-		let location = trip.locations[0].location.split(",").shift()
-		console.log(location);
+		// From the places API, the location is stored as "San Diego, California,USA". As trip.locations is an array, get the first value from locations array(trip.locations[0]), get the location name form the hash(trip.locations[0].location), split at the "," and shift() to get location name "San Diego"
+		let locations = trip.locations[0].location.split(",")
+		let location = locations[0]
+		// call the IMAGE API
 		this.getItems(location)
+
 	 }
+
 
 	getItems(location) {
 		fetch("https://api.pexels.com/v1/search?query="+location +"&per_page=15&page=1", {
@@ -34,36 +35,55 @@ class TripInfo extends React.Component {
 			}
 		})
 		.then((response) => {
-		   console.log("photos",response);
 			return response.json()
 	   }).
 		then((items) => {
-			console.log("Items",items);
+			// items response has many keys,including photos(that we need).
 			this.setState({
-			   items: items.photos
+			   items: items.photos  //set the items set to the photos
 		   })
 	   })
 	}
 
-		handleDelete = () =>{
-			this.props.onDelete(this.props.match.params.id)
+	handleDelete = () =>{
+		this.props.onDelete(this.props.match.params.id)
+	}
+
+
+	changeImage = () => {
+		// this method is called when the image is clicked,
+		// get the items array, select the random count.
+		// select that index(count) from the items and get the image size you want.
+		// change the image src.
+		let {items}  =this.state
+		count = Math.floor(Math.random()*items.length)
+		if (items.length) {
+			let url = items[count].src.landscape
+			var imgElement = document.getElementById('imageSrc');
+			imgElement.src = url
 		}
+	}
 
-		changeImage = () => {
+	handleChange = () => {
+		// get the email value typed in input box.
+		this.setState({email: event.target.value})
+	}
 
-			let {items}  =this.state
-			// count = count + 1
-			count = Math.floor(Math.random()*items.length)
-			// this.setState({count: count})
-			console.log("API",items[count]);
-			if (items.length) {
-				let url = items[count].src.medium
-				var imgElement = document.getElementById('imageSrc');
-				imgElement.src = url
+	handleSubmit = () => {
+		//  call the API mailer with emailid and tripid to send the email.
+		fetch(`/${this.props.match.params.id}/mailer`,{
+			method: "POST",
+			body: JSON.stringify(this.state.email),
+			headers: {
+			  'Content-Type': 'application/json'
+			},
+		}).then(
+			(response) => (response.json())
+		).then((response)=>{
+				alert("Email Sent")
+		})
+	 }
 
-			}
-
-		}
 
 	render(){
 
@@ -75,10 +95,11 @@ class TripInfo extends React.Component {
 			maxWidth: 128
 		}
 
-		// this.getItems(trip.locations[0].location)
 		return(
 			<Container>
+
 			<h1 class="text-center" id="header"> Trip Info </h1>
+
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -86,43 +107,13 @@ class TripInfo extends React.Component {
 							{trip && trip.locations.map ((v, i)=>{
 								const tripname = trip.name
 								const tripid = trip.id
-								const day1 = Date.parse(current_date)
-								const day2 = Date.parse(v.start_date)
-								const daystil = (day2 - day1) / (1000 * 3600 * 24)
+								const daystil = (Date.parse(v.start_date) - Date.parse(current_date)) / (1000 * 3600 * 24)
 
-								//start date format
-								const formatDay1 = () => {
-									let date = new Date(v.start_date)
-									let d = date.getDate()+1
-									let m = date.getMonth()+1
-									let y = date.getFullYear()
-									if(d<10){
-										d='0'+d;
-									}
-									if(m<10){
-										m='0'+m;
-									}
-									return `${m}/${d}/${y}`
-								}
-
-								const formatDay2 = () => {
-									let date = new Date(v.end_date)
-									let d = date.getDate()+1
-									let m = date.getMonth()+1
-									let y = date.getFullYear()
-									if(d<10){
-										d='0'+d;
-									}
-									if(m<10){
-										m='0'+m;
-									}
-									return `${m}/${d}/${y}`
-								}
-								//end date format
 								return (
 									<>
 									<Card id="card" key={i}>
 										<CardBody>
+
 										<Row>
 										<Col>
 											<CardTitle className="text-center">{tripname}< hr /></CardTitle>
@@ -131,7 +122,6 @@ class TripInfo extends React.Component {
 										<Row>
 
 											<Col md={6} className="text-center">
-
 											<CardSubtitle className="text-center">
 											Click Me!
 											</CardSubtitle>
@@ -141,10 +131,9 @@ class TripInfo extends React.Component {
 
 											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
 
-											<CardSubtitle>Start Date:{formatDay1()}</CardSubtitle>
+											<CardSubtitle>Start Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
 
-											<CardSubtitle> End Date:{formatDay2()}</CardSubtitle>
-
+											<CardSubtitle> End Date:{(new Date(v.end_date)).toDateString()}</CardSubtitle>
 											</Col>
 
 											<Col md={6} id="extra">
@@ -160,18 +149,23 @@ class TripInfo extends React.Component {
 											</Row>
 										</CardBody>
 									</Card>
-
 									</>
 									)
 								}
 							)}
 							</Col>
+
+							<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+							<Link to="/trips">
+
+							<Button onClick={this.handleSubmit}>Send email
+							</Button>
+							</Link>
 						</CardDeck>
 					</Col>
 				</Row>
 			</Container>
 		)
-
 	}
 }
 
