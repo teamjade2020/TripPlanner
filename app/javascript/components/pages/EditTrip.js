@@ -28,7 +28,6 @@ class EditTrip extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(this.props.trips);
 		const { form } = this.state
 		this.setForm()
 		if (form.name !== '') {
