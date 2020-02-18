@@ -10,7 +10,6 @@ class PastTrips extends React.Component {
 		const trip = trips.filter((a,i)=>
 		{return(a.user_id === current_user.id)})
 
-
   		return (
 			<Container>
 			<h1 className="text-center"> Past Trips </h1>
@@ -20,7 +19,6 @@ class PastTrips extends React.Component {
 						{trip.map((trip, i) =>
 
 						<Col xs={12} key={i}>
-
 
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name

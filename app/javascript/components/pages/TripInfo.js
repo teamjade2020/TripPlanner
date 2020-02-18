@@ -11,7 +11,6 @@ class TripInfo extends React.Component {
 		 items: [],
 		 email: ''
 	   }
-
 	}
 
 	componentDidMount(){
@@ -98,8 +97,8 @@ class TripInfo extends React.Component {
 		return(
 			<Container>
 			<h1 className="text-center"> Trip Info </h1>
-				{/*<Row>
-					<Col xs={12}>*/}
+				<Row>
+					<Col xs={12}>
 						<CardDeck>
 							<Col>
 							{trip && trip.locations.map ((v, i)=>{
@@ -140,8 +139,8 @@ class TripInfo extends React.Component {
 							</Button>
 							</Link>
 						</CardDeck>
-					{/*</Col>
-				</Row>*/}
+					</Col>
+				</Row>
 			</Container>
 		)
 	}

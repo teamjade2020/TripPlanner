@@ -34,19 +34,13 @@ class Dashboard extends React.Component {
 							{trip.map((trip,i) =>
 
 								<Col md={8} xs={8} key = {i}>
-
-
 									{trip.locations.map ((v, i)=>{
 									const tripname = trip.name
 									const tripid = trip.id
 									const daystil = (Date.parse(v.start_date) - Date.parse(current_date)) / (1000 * 3600 * 24)
-
-
 									return (
 									<>
-
 									{ current_date < v.start_date &&
-
 									<Card style={{flex: 1}} key = {i}>
 										<CardBody>
 											<Row>
