@@ -41,16 +41,16 @@ Things you may want to cover:
   
 # Usage:
   
-  Sign Up/Sign In to use the app.
-  Create the trip you are planning next.
-  Check how the place looks like by clicking the picture in the show page.
-  Check out your past trips.
-  Email the trip to your emailId.
+  - Sign Up/Sign In to use the app.
+  - Create the trip you are planning next.
+  - Check how the place looks like by clicking the picture in the show page.
+  - Check out your past trips.
+  - Email the trip to your emailId.
   
   
 # Credits:
-  Diego 
-  Earnesto
-  Aizada
-  Jeel Naik
+  - Diego 
+  - Earnesto
+  - Aizada
+  - Jeel Naik
 
