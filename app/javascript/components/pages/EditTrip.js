@@ -29,9 +29,6 @@ class EditTrip extends React.Component {
 	}
 
 	componentDidMount(){
-
-		const { form } = this.state
-
 		this.setForm()
 		console.log(this.props);
 		const { form } = this.state

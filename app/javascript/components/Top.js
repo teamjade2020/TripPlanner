@@ -35,6 +35,9 @@ class Top extends React.Component {
                     <NavItem>
                         <NavLink href="/newtrip">Add New Trip</NavLink>
                     </NavItem>
+					<NavItem>
+                        <NavLink href="/aboutus">About Us</NavLink>
+                    </NavItem>
                     </Nav>
                     <Button className="btn btn-secondary" href={sign_out_route}>Sign Out</Button>
                 </Collapse>
