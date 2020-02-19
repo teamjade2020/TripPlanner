@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import NewTripLocations from './NewTripLocations'
 
 
+
 class NewTrip extends React.Component {
 	constructor(props){
 		super(props)
@@ -40,7 +41,7 @@ class NewTrip extends React.Component {
 	render() {
 		return(
 			<React.Fragment>
-				<Container sm={6}>
+				<Container sm={6} id="form">
 
 				<h1 className="text-center" id="header">Add New Trip</h1>
 

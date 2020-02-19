@@ -8,14 +8,14 @@ class TripInfo extends React.Component {
 	constructor() {
 	   super()
 	   this.state = {
-		 items: [],
-		 email: ''
+		items: [],
+		email: ''
 	   }
-
 	}
 
 	componentDidMount(){
 		// trips array is passed as props, and ID is in url which is passed as params id.
+		console.log(this.props);
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
@@ -23,6 +23,7 @@ class TripInfo extends React.Component {
 		let locations = trip.locations[0].location.split(",")
 		let location = locations[0]
 		// call the IMAGE API
+		console.log();
 		this.getItems(location)
 
 	 }
@@ -100,6 +101,7 @@ class TripInfo extends React.Component {
 
 			<h1 className="text-center" id="header"> Trip Info </h1>
 
+
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -147,11 +149,12 @@ class TripInfo extends React.Component {
 											<Link to={`/edit/${trip.id}`}><Button>Edit Trip</Button></Link>
 											</Col>
 											</Row>
-											<Row className="text-center" id="extra">
+											<Row className="text-center" id="email">
 											<CardSubtitle className="text-center" >
 											Share Trip With Your Friends
 											</CardSubtitle>
-											<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+											<Input name="emailid" value={this.state.email} onChange={this.handleChange}
+											placeholder="Enter E-mail" />
 
 											<div id="dates">
 											<Link to="/trips">

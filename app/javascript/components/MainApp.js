@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard"
 import PastTrips from "./pages/PastTrips"
 import TripInfo from "./pages/TripInfo"
 import NewTrip from "./pages/NewTrip"
+import AboutUs from './pages/AboutUs'
 import NewTripLocations from './pages/NewTripLocations'
 import Top from './Top'
 import EditTrip from './pages/EditTrip'
@@ -116,8 +117,12 @@ class MainApp extends React.Component {
 						//route for new trips
 						<Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
 
+						<Route exact path ='/aboutus'> <AboutUs /> </Route>
+
 						//route  for edit trip
 						<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
+
+						<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} onEdit={ this.editTrip } current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
 					</Switch>
 
 				</React.Fragment>

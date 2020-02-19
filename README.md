@@ -1,30 +1,7 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # TripPlanner
 
-  Tripplanner website that let's you keep tracks of your upcoming and past trips, with autocomplete and image API.
+TripPlanner is an app that let's you keep track of your upcoming and past trips. It let's you create an itinerary for your upcoming trip that you can then share with your friends via email.
 
 # Table of Contents:
   
@@ -49,8 +26,8 @@ Things you may want to cover:
   
   
 # Credits:
-  - Diego 
-  - Earnesto
-  - Aizada
+  - Diego Plancarte
+  - Ernesto Godoy 
+  - Aizada Mollenkopf
   - Jeel Naik
 

@@ -12,11 +12,11 @@ class PastTrips extends React.Component {
 		const trip = trips.filter((a,i)=>
 		{return(a.user_id === current_user.id)})
 
-
 		const imgStyle = {
 			maxHeight: 128,
 			maxWidth: 128
 		}
+
 
   		return (
 			<Container>
@@ -30,7 +30,6 @@ class PastTrips extends React.Component {
 
 						<Col xs={12} key={i}>
 
-
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
 							const tripid = trip.id
@@ -43,7 +42,7 @@ class PastTrips extends React.Component {
 										<CardBody>
 											<Row>
 												<Col>
-													<CardTitle className="text-center text-capitalize">{tripname}<hr /></CardTitle>
+													<CardTitle id="title" className="text-center">{tripname}<hr /></CardTitle>
 												</Col>
 											</Row>
 
