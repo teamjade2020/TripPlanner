@@ -147,11 +147,12 @@ class TripInfo extends React.Component {
 											<Link to={`/edit/${trip.id}`}><Button>Edit Trip</Button></Link>
 											</Col>
 											</Row>
-											<Row className="text-center" id="extra">
+											<Row className="text-center" id="email">
 											<CardSubtitle className="text-center" >
 											Share Trip With Your Friends
 											</CardSubtitle>
-											<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+											<Input name="emailid" value={this.state.email} onChange={this.handleChange}
+											placeholder="Enter E-mail" />
 
 											<div id="dates">
 											<Link to="/trips">

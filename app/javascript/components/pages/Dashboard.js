@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
 										<div >
 											<Row>
 												<Col>
-													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
+													<CardTitle id="title" className="text-center">{tripname}<hr /></CardTitle>
 												</Col>
 											</Row>
 
