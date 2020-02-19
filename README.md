@@ -50,7 +50,7 @@ Things you may want to cover:
   
 # Credits:
   - Diego 
-  - Earnesto
+  - Ernesto
   - Aizada
   - Jeel Naik
 
