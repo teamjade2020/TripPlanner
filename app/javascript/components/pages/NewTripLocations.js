@@ -109,7 +109,7 @@ class NewTripLocations extends React.Component {
 					onChange={this.handleChange}
 					value={this.state.locations.location}
 					placeholder="Enter Location" />
-				<FormFeedback invalid>This should not be empty!</FormFeedback>
+				<FormFeedback>This should not be empty!</FormFeedback>
       		</FormGroup>
 
 			<Row>
@@ -125,7 +125,7 @@ class NewTripLocations extends React.Component {
 							onChange={this.handleChange}
 							value={this.state.locations.start_date}
 							placeholder="Enter Start Date" />
-					<FormFeedback invalid>This should not be empty!</FormFeedback>
+					<FormFeedback>This should not be empty!</FormFeedback>
 					</FormGroup>
 				</Col>
 				<Col md={6}>
@@ -140,7 +140,7 @@ class NewTripLocations extends React.Component {
 							onChange={this.handleChange}
 							value={this.state.locations.end_date}
 							placeholder="Enter End Date" />
-					<FormFeedback invalid>This should not be empty!</FormFeedback>
+					<FormFeedback>This should not be empty!</FormFeedback>
 					</FormGroup>
 				</Col>
 			</Row>

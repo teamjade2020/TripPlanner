@@ -56,8 +56,8 @@ class NewTrip extends React.Component {
 								id="name"
 								onChange={this.handleChange}
 								value={this.state.form.name}
-								placeholder="Name Your Trip" required/>
-							<FormFeedback invalid>This should not be empty!</FormFeedback>
+								placeholder="Name Your Trip" />
+							<FormFeedback>This should not be empty!</FormFeedback>
 						</FormGroup>
 						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
 					</Form>

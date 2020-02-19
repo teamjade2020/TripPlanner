@@ -13,6 +13,7 @@ import NewTripLocations from './pages/NewTripLocations'
 import Top from './Top'
 import EditTrip from './pages/EditTrip'
 import EditTripLocation from './pages/EditTripLocation'
+import Tutorial from './Tutorial'
 
 class MainApp extends React.Component {
 	constructor(props){
@@ -32,13 +33,13 @@ class MainApp extends React.Component {
 			}
 		})
 		.then((tripsArray)=>{
-			 this.setState({trips: tripsArray})
+			this.setState({trips: tripsArray})
 		})
 	}
 
 	//this creates trip and puts it in the database
 	createTrip = (trip) =>{
-		 fetch('/trips', {
+		fetch('/trips', {
 			body: JSON.stringify(trip),
 			headers:{
 				'Content-Type': 'application/json'
@@ -86,53 +87,48 @@ class MainApp extends React.Component {
 		})
 	}
 
-  	render () {
+	render () {
 		const todayDate = new Date().toISOString().slice(0,10)
-    	const {
-	      signed_in,
-	      sign_in_route,
-	      sign_out_route,
-		  current_user,
-		  new_user_registration_path
-	    } = this.props
+		const {
+			signed_in,
+			sign_in_route,
+			sign_out_route,
+			current_user,
+			new_user_registration_path
+		} = this.props
 
 
-	    return (
-	    <Router>
-	         <React.Fragment>
+		return (
+			<Router>
+				<React.Fragment>
 
-	      	{/*nav bar*/}
-			<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} new_user_registration_path={new_user_registration_path}/>
+				{/*nav bar*/}
+				<Top signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} new_user_registration_path={new_user_registration_path}/>
 
-	        <Switch>
+					<Switch>
+						<Route exact path="/" render={(props) => <Tutorial signed_in={signed_in} sign_in_route={sign_in_route} sign_out_route={sign_out_route} new_user_registration_path={new_user_registration_path}/> } />
 
-			<Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
+						<Route exact path="/tripinfo/:id" render={(props) => <TripInfo {...props} onDelete={this.deleteTrip} trips={ this.state.trips } current_date ={ todayDate } /> } />
 
-			<Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
+						<Route exact path="/trips" render={(props) => <Dashboard trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
-			<Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
+						<Route exact path="/pasttrips" render={(props) => <PastTrips trips={ this.state.trips } current_user={ current_user } current_date ={ todayDate } /> } />
 
-			//route for new trips
-			<Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
+						//route for new trips
+						<Route exact path="/newtrip" render={(props) => <NewTrip onSubmit={ this.createTrip } current_user={ current_user } current_date ={ todayDate }  /> } />
 
-			<Route exact path ='/aboutus'>
-				<AboutUs />
-			</Route>
+						<Route exact path ='/aboutus'> <AboutUs /> </Route>
 
-			//route  for edit trip
-			<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user }
-			  current_date ={ todayDate } trips={this.state.trips} /> } />
+						//route  for edit trip
+						<Route exact path="/edit/:id" render={(props) => <EditTrip {...props} onEdit={ this.editTrip } current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
 
-		  	<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} onEdit={ this.editTrip } current_user={ current_user }
-			  current_date ={ todayDate } trips={this.state.trips} /> } />
+						<Route exact path="/editlocation/:id" render={(props) => <EditTripLocation {...props} onEdit={ this.editTrip } current_user={ current_user } current_date ={ todayDate } trips={this.state.trips} /> } />
+					</Switch>
 
-
-	        </Switch>
-
-		  	</React.Fragment>
-		   </Router>
-	    );
-  }
+				</React.Fragment>
+			</Router>
+		);
+	}
 }
 
 export default MainApp
