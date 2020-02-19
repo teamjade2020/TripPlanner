@@ -57,9 +57,9 @@ class EditTripLocations extends React.Component {
 	}
 
 	setForm = () =>{
+		console.log(this.props);
 		const { locations } = this.state
 		var loc = this.props.locations[0]
-		console.log(loc,locations);
 		locations['id'] = loc['id']
 		locations['location'] = loc['location']
 		locations['start_date'] = loc['start_date']
@@ -105,7 +105,7 @@ class EditTripLocations extends React.Component {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
 				button = <Link to ="/trips" className= "btn btn-primary" onClick={this.handleEdit}>Edit Trip</Link>
 			} else {
-				button = <Link to="" className= "btn btn-secondary">Edit Trip</Link>
+				button = <a className= "btn btn-secondary text-white">Edit Trip</a>
 			}
 		}
 		valid()

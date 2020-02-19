@@ -89,7 +89,7 @@ class NewTripLocations extends React.Component {
 			if (locationValid && start_dateValid && end_dateValid && nameValid) {
 				button = <Link to ="/trips" className="btn btn-primary" onClick={this.handleSubmit}>Add Trip</Link>
 			} else {
-				button = <Link className="btn btn-danger">Add Trip</Link>
+				button = <a className="btn btn-danger text-white">Add Trip</a>
 			}
 		}
 		valid()

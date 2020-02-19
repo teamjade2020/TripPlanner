@@ -15,6 +15,7 @@ class TripInfo extends React.Component {
 
 	componentDidMount(){
 		// trips array is passed as props, and ID is in url which is passed as params id.
+		console.log(this.props);
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
@@ -22,6 +23,7 @@ class TripInfo extends React.Component {
 		let locations = trip.locations[0].location.split(",")
 		let location = locations[0]
 		// call the IMAGE API
+		console.log();
 		this.getItems(location)
 
 	 }
@@ -70,7 +72,7 @@ class TripInfo extends React.Component {
 
 	handleSubmit = () => {
 		//  call the API mailer with emailid and tripid to send the email.
-		fetch(`http://localhost:3000/${this.props.match.params.id}/mailer`,{
+		fetch(`/${this.props.match.params.id}/mailer`,{
 			method: "POST",
 			body: JSON.stringify(this.state.email),
 			headers: {
@@ -96,7 +98,10 @@ class TripInfo extends React.Component {
 
 		return(
 			<Container>
-			<h1 className="text-center"> Trip Info </h1>
+
+			<h1 className="text-center" id="header"> Trip Info </h1>
+
+
 				<Row>
 					<Col xs={12}>
 						<CardDeck>
@@ -108,22 +113,55 @@ class TripInfo extends React.Component {
 
 								return (
 									<>
-									<Card key={i}>
+									<Card id="card" key={i}>
 										<CardBody>
-											<CardTitle className="text-center">{tripname}</CardTitle>
-											< hr />
+
+										<Row>
+										<Col>
+											<CardTitle className="text-center">{tripname}< hr /></CardTitle>
+											</Col>
+										</Row>
+										<Row>
+
+											<Col md={6} className="text-center">
+											<CardSubtitle className="text-center">
+											Click Me!
+											</CardSubtitle>
 
 											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
-
 											onClick={this.changeImage} />
 
-											<CardSubtitle>Location: {v.location}</CardSubtitle>
-											<CardSubtitle>Start Date:{(new Date(v.start_date)).toDateString()}</CardSubtitle>
-											<CardSubtitle> End Date:{(new Date(v.end_date)).toDateString()}
-											</CardSubtitle>
+											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
+
+											<CardSubtitle>Start Date: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+
+											<CardSubtitle> End Date: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
+											</Col>
+
+											<Col md={6} id="extra">
 											<CardSubtitle> Details: {v.details}</CardSubtitle>
-											<Link to="/trips" onClick={this.handleDelete}> Delete Trip </Link> &nbsp;
-											<Link to={`/edit/${trip.id}`}> Edit Trip </Link>
+											</Col>
+											</Row>
+
+											<Row>
+											<Col className="text-center" id="buttons">
+											<Link to="/trips" onClick={this.handleDelete}><Button> Delete Trip </Button></Link> &nbsp;
+											<Link to={`/edit/${trip.id}`}><Button>Edit Trip</Button></Link>
+											</Col>
+											</Row>
+											<Row className="text-center" id="extra">
+											<CardSubtitle className="text-center" >
+											Share Trip With Your Friends
+											</CardSubtitle>
+											<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
+
+											<div id="dates">
+											<Link to="/trips">
+											<Button onClick={this.handleSubmit}>Send email
+											</Button>
+											</Link>
+											</div>
+											</Row>
 										</CardBody>
 									</Card>
 									</>
@@ -132,12 +170,7 @@ class TripInfo extends React.Component {
 							)}
 							</Col>
 
-							<Input name="emailid" value={this.state.email} onChange={this.handleChange} />
-							<Link to="/trips">
 
-							<Button onClick={this.handleSubmit}>Send email
-							</Button>
-							</Link>
 						</CardDeck>
 					</Col>
 				</Row>

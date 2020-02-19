@@ -19,21 +19,19 @@ class Dashboard extends React.Component {
 		}
 
   		return (
-			<>
-			<Jumbotron>
-		        <h1 className="display-3">Hello, {current_user.first_name}</h1>
-		        <p className="lead">Welcome to your travel Dashboard!!!</p>
-		        <hr className="my-2" />
-	      	</Jumbotron>
+
 			<Container>
-			<h1 className="text-center"> Upcoming Trips </h1>
+			<h1 className="text-center" id="header"> Upcoming Trips </h1>
 				<Row >
-					<Col>
-						<CardDeck style ={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+					<Col md={12} xs={12}>
+						<CardDeck style ={{display: 'flex', flexDirection: 'column'}} >
 
 							{trip.map((trip,i) =>
 
-								<Col md={8} xs={8} key = {i}>
+								<Col md={12} xs={12} key = {i}>
+
+
+
 									{trip.locations.map ((v, i)=>{
 									const tripname = trip.name
 									const tripid = trip.id
@@ -41,8 +39,11 @@ class Dashboard extends React.Component {
 									return (
 									<>
 									{ current_date < v.start_date &&
-									<Card style={{flex: 1}} key = {i}>
+
+									<Card style={{flex: 1}} key = {i} id="card">
+
 										<CardBody>
+										<div >
 											<Row>
 												<Col>
 													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
@@ -50,25 +51,31 @@ class Dashboard extends React.Component {
 											</Row>
 
 											<Row>
-
-												<Col md={3}>
+												<Col className="text-center" md={4}>
 													<CardImg src={Pic} style={imgStyle} alt="travel image" />
+												</Col>
+												<Col md={4} className="text-center" id="dates">
+
+													<CardSubtitle id="dates">Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+
+													&nbsp;
+
+													<CardSubtitle>End: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
 
 												</Col>
-												<Col md={4}>
-													<CardSubtitle>Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
-													<CardSubtitle>End: {(new Date(v.end_date)).toDateString()}</CardSubtitle>
-												</Col>
-												<Col md={3}>
+												<Col md={4} className="text-center" id="extra">
 													<CardText> Days Until Trip: {daystil}</CardText>
 
-													<Link to={`/tripinfo/${tripid}`}>
-													<Button>More Info</Button></Link>
+
+													<Link to={`/tripinfo/${tripid}`}><Button>More Info</Button></Link>
+
 												</Col>
 											</Row>
+										</div>
 										</CardBody>
 									</Card>
 									}
+
 									</>
 									)})}
 								</Col>
@@ -77,7 +84,7 @@ class Dashboard extends React.Component {
 					</Col>
 				</Row>
 			</Container>
-			</>
+
 		);
 	}
 };
