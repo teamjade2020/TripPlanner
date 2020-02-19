@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, Input } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import Pic from 'images/pic.jpg'
+import Pic from 'images/pic1.jpg'
 var count =0
 
 class TripInfo extends React.Component {
@@ -75,14 +75,14 @@ class TripInfo extends React.Component {
 			method: "POST",
 			body: JSON.stringify(this.state.email),
 			headers: {
-			  'Content-Type': 'application/json'
+			'Content-Type': 'application/json'
 			},
 		}).then(
 			(response) => (response.json())
 		).then((response)=>{
 				alert("Email Sent")
 		})
-	 }
+	}
 
 
 	render(){
@@ -116,7 +116,7 @@ class TripInfo extends React.Component {
 
 										<Row>
 										<Col>
-											<CardTitle className="text-center">{tripname}< hr /></CardTitle>
+											<CardTitle className="text-center text-capitalize">{tripname}< hr /></CardTitle>
 											</Col>
 										</Row>
 										<Row>
@@ -126,10 +126,10 @@ class TripInfo extends React.Component {
 											Click Me!
 											</CardSubtitle>
 
-											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
-											onClick={this.changeImage} />
+											<CardImg id="imageSrc" src={Pic} className="img-fluid" alt="travel image"
+											onClick={this.changeImage} onPress={this.changeImage}/>
 
-											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
+											<CardSubtitle id="dates" className="text-capitalize">Location: {v.location}</CardSubtitle>
 
 											<CardSubtitle>Start Date: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
 

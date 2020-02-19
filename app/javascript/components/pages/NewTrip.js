@@ -42,7 +42,7 @@ class NewTrip extends React.Component {
 			<React.Fragment>
 				<Container sm={6}>
 
-				<h1 class="text-center" id="header">Add New Trip</h1>
+				<h1 className="text-center" id="header">Add New Trip</h1>
 
 					<Form>
 						<FormGroup>
@@ -56,7 +56,7 @@ class NewTrip extends React.Component {
 								onChange={this.handleChange}
 								value={this.state.form.name}
 								placeholder="Name Your Trip" />
-							<FormFeedback invalid>This should not be empty!</FormFeedback>
+							<FormFeedback>This should not be empty!</FormFeedback>
 						</FormGroup>
 						<NewTripLocations nameValid={this.state.nameValid} onSubmit={this.handleSubmit}/>
 					</Form>

@@ -43,7 +43,7 @@ class PastTrips extends React.Component {
 										<CardBody>
 											<Row>
 												<Col>
-													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
+													<CardTitle className="text-center text-capitalize">{tripname}<hr /></CardTitle>
 												</Col>
 											</Row>
 

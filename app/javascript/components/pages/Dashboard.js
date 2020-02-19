@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse, CardHeader, Jumbotron } from 'reactstrap';
 import { Link } from "react-router-dom"
 import Pic from 'images/pic.jpg'
+import Pic1 from 'images/pic1.jpg'
 
 class Dashboard extends React.Component {
 
@@ -18,7 +19,7 @@ class Dashboard extends React.Component {
 			maxWidth: 200
 		}
 
-  		return (
+		return (
 
 			<Container>
 			<h1 className="text-center" id="header"> Upcoming Trips </h1>
@@ -47,13 +48,13 @@ class Dashboard extends React.Component {
 										<div >
 											<Row>
 												<Col>
-													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
+													<CardTitle className="text-center text-capitalize">{tripname}<hr /></CardTitle>
 												</Col>
 											</Row>
 
 											<Row>
 												<Col className="text-center" md={4}>
-													<CardImg src={Pic} style={imgStyle} alt="travel image" />
+													<CardImg src={Pic1} className="img-fluid" alt="travel image" />
 												</Col>
 												<Col md={4} className="text-center" id="dates">
 
