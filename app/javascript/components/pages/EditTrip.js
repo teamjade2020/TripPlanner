@@ -71,8 +71,8 @@ class EditTrip extends React.Component {
 	render() {
 		return(
 			<React.Fragment>
-				<Container sm={6}>
-				<h1 class="text-center" id="header"> Edit Trip </h1>
+				<Container sm={6} id="form">
+				<h1 className="text-center" id="header"> Edit Trip </h1>
 					<Form>
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>

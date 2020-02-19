@@ -126,7 +126,7 @@ class TripInfo extends React.Component {
 											Click Me!
 											</CardSubtitle>
 
-											<CardImg id="imageSrc" src={Pic} style={imgStyle} alt="travel image"
+											<CardImg id="imageSrc" src={Pic} className="img-fluid" alt="travel image"
 											onClick={this.changeImage} />
 
 											<CardSubtitle id="dates">Location: {v.location}</CardSubtitle>
