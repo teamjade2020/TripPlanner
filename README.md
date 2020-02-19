@@ -49,8 +49,8 @@ Things you may want to cover:
   
   
 # Credits:
-  - Diego 
-  - Ernesto
-  - Aizada
+  - Diego Plancarte
+  - Ernesto Godoy 
+  - Aizada Mollenkopf
   - Jeel Naik
 
