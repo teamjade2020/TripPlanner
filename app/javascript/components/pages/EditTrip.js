@@ -76,6 +76,7 @@ class EditTrip extends React.Component {
 		return(
 			<React.Fragment>
 				<Container sm={6}>
+				<h1 class="text-center" id="header"> Edit Trip </h1>
 					<Form>
 						<FormGroup>
 							<Label for="name">Name Of Trip</Label>
@@ -87,7 +88,8 @@ class EditTrip extends React.Component {
 								id="name"
 								onChange={this.handleChange}
 								value={this.state.form.name} />
-							<FormFeedback invalid>This should not be empty!</FormFeedback>
+							<FormFeedback>This should not be empty!
+							</FormFeedback>
 						</FormGroup>
 						{this.state.success &&
 						<EditTripLocation nameValid = {this.state.nameValid} onEdit={this.handleSubmit} locations={this.state.form.locations}/> }

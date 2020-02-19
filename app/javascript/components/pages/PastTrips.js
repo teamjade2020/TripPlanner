@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, CardImg, Row,CardDeck,Col, CardText, CardBody, CardTitle, CardSubtitle, Button, Container, UncontrolledCollapse } from 'reactstrap';
 import { Link } from "react-router-dom"
 
+import Pic from 'images/complete.png'
+
 
 class PastTrips extends React.Component {
 	render() {
@@ -11,15 +13,20 @@ class PastTrips extends React.Component {
 		{return(a.user_id === current_user.id)})
 
 
+		const imgStyle = {
+			maxHeight: 128,
+			maxWidth: 128
+		}
+
   		return (
 			<Container>
-			<h1 className="text-center"> Past Trips </h1>
+
+			<h1 className="text-center" id="header"> Past Trips </h1>
+
 			<Row>
 				<Col>
 					<CardDeck>
-
-
-					{trip.map((trip, i) =>
+						{trip.map((trip, i) =>
 
 						<Col xs={12} key={i}>
 
@@ -27,35 +34,36 @@ class PastTrips extends React.Component {
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name
 							const tripid = trip.id
-							// correcting the date format
-							const formatDay = (day) => {
-								let date = new Date(day)
-								let d = date.getDate()+1
-								let m = date.getMonth()+1
-								let y = date.getFullYear()
-								if(d<10){
-									d='0'+d;
-								}
-								if(m<10){
-									m='0'+m;
-								}
-								return `${m}/${d}/${y}`
-							}
 
 							return (
 								<>
 								{ current_date > v.start_date &&
-								<Card>
-									<CardBody>
-										<CardTitle>{tripname}</CardTitle>
-										<CardSubtitle>Start Date:{formatDay(v.start_date)}</CardSubtitle>
-										<CardSubtitle>End Date:{formatDay(v.end_date)}</CardSubtitle>
-										<CardText>Location: { v.location }</CardText>
-										<CardText>Details: { v.details }</CardText>
-										<Link to={`/tripinfo/${tripid}`}>More Info</Link>
 
-									</CardBody>
-								</Card>
+									<Card style={{flex: 1}} key = {i} id="card">
+										<CardBody>
+											<Row>
+												<Col>
+													<CardTitle className="text-center">{tripname}<hr /></CardTitle>
+												</Col>
+											</Row>
+
+											<Row>
+												<Col md={6} className="text-center">
+													<CardImg src={Pic} style={imgStyle} alt="travel image" />
+												</Col>
+												<Col md={6} className="text-center">
+													<CardSubtitle id="dates">Start: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+													<CardSubtitle>End: {(new Date(v.start_date)).toDateString()}</CardSubtitle>
+													<div id="buttons">
+
+													<Link to={`/tripinfo/${tripid}`}><Button>More Info</Button></Link>
+													</div>
+
+
+												</Col>
+											</Row>
+										</CardBody>
+									</Card>
 								}
 								</>
 							)
