@@ -40,9 +40,9 @@ class NewTrip extends React.Component {
 	render() {
 		return(
 			<React.Fragment>
-				<Container sm={6}>
+				<Container sm={6} id="form">
 
-				<h1 class="text-center" id="header">Add New Trip</h1>
+				<h1 className="text-center" id="header">Add New Trip</h1>
 
 					<Form>
 						<FormGroup>
