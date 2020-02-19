@@ -12,11 +12,11 @@ class PastTrips extends React.Component {
 		const trip = trips.filter((a,i)=>
 		{return(a.user_id === current_user.id)})
 
-
 		const imgStyle = {
 			maxHeight: 128,
 			maxWidth: 128
 		}
+
 
   		return (
 			<Container>
@@ -29,7 +29,6 @@ class PastTrips extends React.Component {
 						{trip.map((trip, i) =>
 
 						<Col xs={12} key={i}>
-
 
 						{trip.locations.map ((v, i)=>{
 							const tripname = trip.name

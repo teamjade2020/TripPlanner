@@ -11,11 +11,11 @@ class TripInfo extends React.Component {
 		 items: [],
 		 email: ''
 	   }
-
 	}
 
 	componentDidMount(){
 		// trips array is passed as props, and ID is in url which is passed as params id.
+		console.log(this.props);
 		const  tripid  = this.props.match.params.id
  		const { trips }  = this.props
  		const trip = trips.find((t)=> t.id === parseInt(tripid))
@@ -23,6 +23,7 @@ class TripInfo extends React.Component {
 		let locations = trip.locations[0].location.split(",")
 		let location = locations[0]
 		// call the IMAGE API
+		console.log();
 		this.getItems(location)
 
 	 }
@@ -99,6 +100,7 @@ class TripInfo extends React.Component {
 			<Container>
 
 			<h1 className="text-center" id="header"> Trip Info </h1>
+
 
 				<Row>
 					<Col xs={12}>
