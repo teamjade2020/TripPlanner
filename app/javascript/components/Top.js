@@ -54,9 +54,9 @@ class Top extends React.Component {
                             <NavLink href="/aboutus">About Us</NavLink>
                         </NavItem>
                         </Nav>
-                    </Collapse>
                         <Button className="btn btn-secondary" href={new_user_registration_path}>Sign Up</Button> &nbsp;
                         <Button className="btn btn-secondary" href={sign_in_route}>Sign In</Button>
+                    </Collapse>
                     </Navbar>
                 }
             </React.Fragment>
