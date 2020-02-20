@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import AboutUs from './pages/AboutUs'
 
 class Top extends React.Component {
 
@@ -44,15 +45,21 @@ class Top extends React.Component {
                 </Navbar>
                 }
                 {!signed_in &&
-                    <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary" light expand="md">
+                    <Navbar className="navbar navbar-expand-md navbar-collapse-xs navbar-dark bg-primary">
                     <NavbarBrand href="/">Trip Planner</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/aboutus">About Us</NavLink>
+                        </NavItem>
                         </Nav>
+                    </Collapse>
                         <Button className="btn btn-secondary" href={new_user_registration_path}>Sign Up</Button> &nbsp;
                         <Button className="btn btn-secondary" href={sign_in_route}>Sign In</Button>
                     </Navbar>
                 }
-          </React.Fragment>
+            </React.Fragment>
         )
     }
 }
