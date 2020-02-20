@@ -3,6 +3,7 @@ import { Card, CardImg, Row,CardDeck,Col, CardText, Button, Container, Jumbotron
 import NewTrip from 'images/NewTrip.gif'
 import UpcomingTrips from 'images/UpcomingTrips.gif'
 import SendEmail from 'images/SendEmail.gif'
+import Phone from 'images/phone.gif'
 
 class Tutorial extends React.Component {
     constructor(props) {
@@ -57,6 +58,20 @@ class Tutorial extends React.Component {
                                 </Col>
                                 <Col xs="auto">
                                     <CardImg src={SendEmail} className="img-fluid shadow p-3 mb-5 bg-white rounded" alt="sharing trip with email"/>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <br />
+                        <br />
+                        <Card style={{border: 'none'}} >
+                            <Row sm={2} xs={1}>
+                                <Col xs="auto" md={4}>
+                                    <CardText className="text-center">
+                                        <h1>Completely responsive!</h1>
+                                    </CardText>
+                                </Col>
+                                <Col xs="auto">
+                                    <CardImg src={Phone} className="img-fluid shadow p-3 mb-5 bg-white rounded" alt="showing responsiveness"/>
                                 </Col>
                             </Row>
                         </Card>
