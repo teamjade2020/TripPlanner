@@ -110,7 +110,7 @@ class NewTripLocations extends React.Component {
 					value={this.state.locations.location}
 					placeholder="Enter Location" />
 				<FormFeedback>This should not be empty!</FormFeedback>
-      		</FormGroup>
+			</FormGroup>
 
 			<Row>
 				<Col md={6}>
@@ -154,7 +154,7 @@ class NewTripLocations extends React.Component {
 					onChange={this.handleChange}
 					value={this.state.locations.details}
 					placeholder="Body" />
-      		</FormGroup>
+			</FormGroup>
 			{this.state.success && <Redirect to="/trips" />}
 			{button}
 			</React.Fragment>

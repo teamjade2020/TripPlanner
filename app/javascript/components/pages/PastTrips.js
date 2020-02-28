@@ -18,7 +18,7 @@ class PastTrips extends React.Component {
 		}
 
 
-  		return (
+		return (
 			<Container>
 
 			<h1 className="text-center" id="header"> Past Trips </h1>
@@ -72,7 +72,7 @@ class PastTrips extends React.Component {
 					)}
 					</CardDeck>
 				</Col>
-			   </Row>
+			</Row>
 			</Container>
 		);
 	}
