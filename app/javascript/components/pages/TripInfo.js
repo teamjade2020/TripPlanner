@@ -6,27 +6,25 @@ var count =0
 
 class TripInfo extends React.Component {
 	constructor() {
-	   super()
-	   this.state = {
-		items: [],
-		email: ''
-	   }
+		super()
+		this.state = {
+			items: [],
+			email: ''
+		}
 	}
 
 	componentDidMount(){
 		// trips array is passed as props, and ID is in url which is passed as params id.
-		console.log(this.props);
 		const  tripid  = this.props.match.params.id
- 		const { trips }  = this.props
- 		const trip = trips.find((t)=> t.id === parseInt(tripid))
+		const { trips }  = this.props
+		const trip = trips.find((t)=> t.id === parseInt(tripid))
 		// From the places API, the location is stored as "San Diego, California,USA". As trip.locations is an array, get the first value from locations array(trip.locations[0]), get the location name form the hash(trip.locations[0].location), split at the "," and shift() to get location name "San Diego"
 		let locations = trip.locations[0].location.split(",")
 		let location = locations[0]
 		// call the IMAGE API
-		console.log();
 		this.getItems(location)
 
-	 }
+	}
 
 
 	getItems(location) {
@@ -37,13 +35,13 @@ class TripInfo extends React.Component {
 		})
 		.then((response) => {
 			return response.json()
-	   }).
+		}).
 		then((items) => {
 			// items response has many keys,including photos(that we need).
 			this.setState({
 			   items: items.photos  //set the items set to the photos
-		   })
-	   })
+			})
+		})
 	}
 
 	handleDelete = () =>{

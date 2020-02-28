@@ -26,12 +26,12 @@ class EditTripLocations extends React.Component {
 		let {locations} = this.state
 		var places = require('places.js');
 		var placesAutocomplete = places({
-		  appId: 'plUPETZRZK4Z',
-		  apiKey: '1beace8bb77d86050f898d516af020c5',
-		  container: document.querySelector('#location'),
-	  	}).configure({
-		  type: 'city',
-	  	});
+			appId: 'plUPETZRZK4Z',
+			apiKey: '1beace8bb77d86050f898d516af020c5',
+			container: document.querySelector('#location'),
+		}).configure({
+			type: 'city',
+		});
 		placesAutocomplete.on('change', e => {
 		locations['location'] =  e.suggestion.name
 		this.setState({locations: locations})
@@ -57,7 +57,6 @@ class EditTripLocations extends React.Component {
 	}
 
 	setForm = () =>{
-		console.log(this.props);
 		const { locations } = this.state
 		var loc = this.props.locations[0]
 		locations['id'] = loc['id']
@@ -126,7 +125,7 @@ class EditTripLocations extends React.Component {
 					onChange={this.handleChange}
 					value={this.state.locations.location} />
 				<FormFeedback>This should not be empty!</FormFeedback>
-      		</FormGroup>
+			</FormGroup>
 
 			<Row>
 				<Col md={6}>
@@ -167,8 +166,8 @@ class EditTripLocations extends React.Component {
 					id="details"
 					onChange={this.handleChange}
 					value={this.state.locations.details}
-					 />
-      		</FormGroup>
+					/>
+			</FormGroup>
 			{this.state.success && <Redirect to="/trips" />}
 			{button}
 			</React.Fragment>
